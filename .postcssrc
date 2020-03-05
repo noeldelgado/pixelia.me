@@ -6,6 +6,7 @@
         "customProperties": false,
         "calc": false
       }
-    }
+    },
+    "postcss-color-mod-function": {}
   }
 }
