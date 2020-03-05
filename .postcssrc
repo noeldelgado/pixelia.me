@@ -1,0 +1,11 @@
+{
+  "modules": false,
+  "plugins": {
+    "postcss-cssnext": {
+      "features": {
+        "customProperties": false,
+        "calc": false
+      }
+    }
+  }
+}
