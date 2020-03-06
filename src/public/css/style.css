@@ -29,7 +29,9 @@ body {
 }
 
 a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 24px;
   color: var(--color-main);
   text-decoration: none;
   outline: none;
