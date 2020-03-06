@@ -20,7 +20,7 @@ export default class HandleProjectsLoad {
         that._iframeLoader = $('.iframe-loader');
         that._iframeLoaderSecLayer = $('.iframe-loader > div:nth-child(1)');
         that._iframeLoaderMainLayer = $('.iframe-loader > div:nth-child(2)')
-        that._previousFocusedElement;
+        that._previousFocusedElement = null;
     }
 
     run() {
@@ -62,25 +62,25 @@ export default class HandleProjectsLoad {
             that._demoWrapper.style.opacity = 1;
             that._iframeLoader.classList.add('-hide');
 
-            that._iframeLoaderSecLayer.addEventListener('transitionend', (ev) => {
+            that._iframeLoaderSecLayer.addEventListener('transitionend', () => {
                 that._demoWrapper.classList.add('-loaded');
             }, { once: true });
         }, { once: true });
     }
 
-    _handleCloseIframe(ev) {
+    _handleCloseIframe() {
         const that = this;
 
         that._iframeLoader.classList.remove('-hide');
 
-        that._iframeLoaderMainLayer.addEventListener('transitionend', function(ev) {
+        that._iframeLoaderMainLayer.addEventListener('transitionend', () => {
             that._iframeLoader.classList.remove('-show');
 
             that._demoWrapper.style.opacity = 0;
             that._demoWrapper.style.display = 'none';
             that._demoWrapper.classList.remove('-loaded');
 
-            that._iframeLoaderMainLayer.addEventListener('transitionend', function(ev) {
+            that._iframeLoaderMainLayer.addEventListener('transitionend', () => {
                 that._iframe.src = '';
                 document.body.style.overflow = '';
 
