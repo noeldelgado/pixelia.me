@@ -4,6 +4,22 @@ section.demos {
   & ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 0 1rem;
+    grid-gap: 2rem 1.2rem;
+  }
+
+  & li {
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  & .image-wrapper  {
+    margin-bottom: 0.25rem;
+  }
+
+  & p {
+    margin: 0;
   }
 }
