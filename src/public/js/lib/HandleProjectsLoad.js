@@ -14,6 +14,7 @@ export default class HandleProjectsLoad {
 
         if (!that.config.links) return;
 
+        that._isActive = false;
         that._demoWrapper = $('.iframe-wrapper');
         that._iframe = that._demoWrapper.querySelector('iframe');
         that._demoCloseButton = $('.iframe-close-button');
@@ -37,9 +38,11 @@ export default class HandleProjectsLoad {
 
         that._handleLinkClick = that._handleLinkClick.bind(that);
         that._handleCloseIframe = that._handleCloseIframe.bind(that);
+        that._handleKeyUp = that._handleKeyUp.bind(that);
 
         that.config.links.forEach(l => l.addEventListener('click', that._handleLinkClick));
         that._demoCloseButton.addEventListener('click', that._handleCloseIframe);
+        document.addEventListener('keyup', that._handleKeyUp);
 
         return that;
     }
@@ -65,6 +68,8 @@ export default class HandleProjectsLoad {
             that._iframe.src = iframeUrl;
 
             that._iframe.addEventListener('load', () => {
+                that._isActive = true;
+
                 that._iframeLoadingText.style.opacity = 0;
                 that._iframeLoader.classList.add('-hide');
                 that._demoWrapper.style.opacity = 1;
@@ -76,9 +81,24 @@ export default class HandleProjectsLoad {
         }, { once: true });
     }
 
+    _handleKeyUp(ev) {
+        const that = this;
+
+        ev = (ev || window.event);
+
+        if (that._isActive === false) {
+            return;
+        }
+
+        if (ev.keyCode == 27) {
+            that._handleCloseIframe();
+        }
+    }
+
     _handleCloseIframe() {
         const that = this;
 
+        that._isActive = false;
         that._iframeLoader.classList.remove('-hide');
 
         that._iframeLoaderMainLayer.addEventListener('transitionend', () => {
