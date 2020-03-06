@@ -2,6 +2,8 @@ doctype html
 html(lang="en")
   head
     title Noel Delgado — Web Developer
+    meta(name="description" content="Personal playground site of Mexican Web Developer Noel Delgado")
+    meta(name="author" content="Noel Delgado")
     link(rel="icon" type="image/png" href="public/images/favicon.png")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="dns-prefetch" href="//fonts.googleapis.com")
@@ -13,27 +15,15 @@ html(lang="en")
       h1 .
       p Noel Delgado, Web Developer &amp; pseudo-<span class="-td">██</span> from Mexico
       ul
-        li
-          a(href="https://codepen.io/noeldelgado")
-            span.-le CodePen
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li
-          a(href="https://github.com/noeldelgado")
-            span.-le GitHub
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li
-          a(href="https://twitter.com/pixelia_me")
-            span.-le Twitter
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li
-          a(href="https://linkedin.com/in/noeldelgado")
-            span.-le LinkedIn
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li pixelia.me@gmail.com
+        each i in social
+          li
+            if i.url
+              a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+                span.-le= i.text
+                svg(width="14" height="14" viewBox="0 0 24 24")
+                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+            else
+              span= i.text
 
     section.demos
       h2 # Demos / Experiments / Animations
@@ -41,17 +31,18 @@ html(lang="en")
         each i in demos
           li
             a(href=`${i.url}`)
+              if i.image
+                .image-wrapper
+                  img(src=`./public/images/${i.image}` alt="")
               span.-le= i.name
-              // if i.image
-              //   img(src=`./public/images/${i.image}`)
-            // p.-desc= i.description
+              p.-desc= i.description
 
     section.oss
       h2 # OSS / Libs / Tools
       ul
         each i in oss
           li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window."))
+            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
               span.-le= i.name
               if i.external
                 svg(width="14" height="14" viewBox="0 0 24 24")
@@ -60,11 +51,11 @@ html(lang="en")
 
     section.projects
       h2 # Projects
-      p Some projects I have contributed to
+      p.-desc Some projects I have contributed to
       ul
         each i in projects
           li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window."))
+            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
               span.-le= i.name
               if i.external
                 svg(width="14" height="14" viewBox="0 0 24 24")
@@ -72,12 +63,13 @@ html(lang="en")
 
     .iframe-wrapper
       iframe(src="" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
-      button
-        svg(width="24" height="24" viewBox="0 0 24 24")
-          path(d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z")
+    button.iframe-close-button(aria-label="Close project detail")
+      svg(width="24" height="24" viewBox="0 0 24 24" aria-hidden="true")
+        path(d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z")
     .iframe-loader
       div
       div
+        p.iframe-loading-text Loading...
 
     script(src="./public/js/index.js")
     script(type="text/javascript").

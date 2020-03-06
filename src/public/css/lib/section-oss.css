@@ -8,11 +8,11 @@ section.oss {
   }
 
   & li {
-    padding: 0;
+    /* padding: 0; */
 
-    &::before {
-      content: none;
-    }
+    /* &::before { */
+    /*   content: none; */
+    /* } */
   }
 }
 

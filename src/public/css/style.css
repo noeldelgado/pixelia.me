@@ -9,6 +9,7 @@
   --color-text: #f0f0f0;
   --color-text-darker: color-mod(var(--color-text) shade(36%));
   --color-main: hsl(168, 100%, 75%);
+  --color-visited: hsl(166, 25%, 75%);
   --color-sec: rgba(161, 170, 243, 1);
 
   font-size: 14px;
@@ -29,6 +30,7 @@ body {
 
 a {
   display: block;
+  min-height: 24px;
   color: var(--color-main);
   text-decoration: none;
   outline: none;
@@ -39,13 +41,9 @@ a {
     vertical-align: top;
     overflow: hidden;
 
-    &:before,
-    &:after {
+    &:before {
       content: '';
       position: absolute;
-    }
-
-    &:before {
       top: 0;
       right: 0;
       bottom: 0;
@@ -54,28 +52,23 @@ a {
       pointer-events: none;
       mix-blend-mode: difference;
       background: var(--color-main);
-      /* background: var(--color-bg); */
       transition: transform 200ms ease;
-    }
-
-    &:after {
-      display: none;
-      bottom: 0;
-      left: 0;
-      /* width: 0; */
-      height: 1px;
-      /* background-color: rgba($main-color, 1); */
-      background-image: linear-gradient(to right, var(--color-main), transparent);
-      transition: width 300ms;
-      /* transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); */
     }
   }
 
+  &:active,
   &:hover,
   &:focus {
-    & .-le::before,
-    & .-le::after {
+    & .-le::before {
       transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &:visited {
+    color: var(--color-visited);
+
+    & .-le::before {
+      background: var(--color-visited);
     }
   }
 }
@@ -132,7 +125,7 @@ section {
   }
 
   & .-desc {
-    font-size: 0.857em;
+    font-size: 0.85714em;
     color: var(--color-text-darker);
  }
 }

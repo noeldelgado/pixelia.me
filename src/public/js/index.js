@@ -1,10 +1,8 @@
-const { log } = console;
-
-import { $, $$ } from './lib/utils';
+import { $$ } from './lib/utils';
 import BackgroundCanvas from './lib/BackgroundCanvas';
 import HandleProjectsLoad from './lib/HandleProjectsLoad';
 
-window.b = new BackgroundCanvas({
+new BackgroundCanvas({
     totalPoints: 200,
     bgColor: getComputedStyle(document.body, null).getPropertyValue('background-color')
 }).run();

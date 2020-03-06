@@ -1,69 +1,13 @@
 const { log } = console;
-const { floor, PI, random } = Math;
+const { PI  } = Math;
 
-import { randomInt } from './utils';
+import Point from './Point';
 
 const internals = {
-    w: 0,
-    h: 0,
-    pointsArray: [],
-
-    MAX_POINT_SPEED: 0.05,
-    MIN_POINT_SPEED: -0.05,
-    MIN_POINT_RADIO: 0.6,
-    MAX_POINT_RADIO: 1,
-
-    COLORS: [
-        // "cyan",
-        // "tomato",
-        // "gold",
-        'rgba(238, 170, 238, .25)',
-        'rgba(238, 170, 238, .75)',
-        'rgba(153, 255, 235, .25)',
-        'rgba(153, 255, 235, .75)'
-    ]
+    maxWidth: 0,
+    maxHeight: 0,
+    pointsArray: []
 };
-
-internals.updatePoint = function updatePoint(point) {
-    point.x += point.sx;
-    point.y += point.sy;
-    point.alpha += point.alphaFactor;
-
-    if (point.x > internals.w || point.x < 0) {
-        point.sx *= -1;
-    }
-
-    if (point.y > internals.h || point.y < 0) {
-        point.sy *= -1;
-    }
-
-    if (point.alpha > 1 || point.alpha < 0) {
-        point.alphaFactor *= -1;
-    }
-
-    if (point.alpha < 0) {
-        point.update();
-    }
-};
-
-
-class Point {
-    constructor(index) {
-        this.index = index;
-        this.alpha = random();
-        this.alphaFactor = this.alpha * .1 * .1;
-        this.update();
-    }
-
-    update() {
-        this.x = random() * internals.w;
-        this.y = random() * internals.h;
-        this.color = internals.COLORS[floor(random() * internals.COLORS.length)];
-        this.r = randomInt(internals.MIN_POINT_RADIO, internals.MAX_POINT_RADIO);
-        this.sx = random() < 0.5 ? internals.MIN_POINT_SPEED : internals.MAX_POINT_SPEED;
-        this.sy = random() < 0.5 ? internals.MIN_POINT_SPEED : internals.MAX_POINT_SPEED;
-    }
-}
 
 export default class BackgroundCanvas {
     constructor(config) {
@@ -83,7 +27,7 @@ export default class BackgroundCanvas {
         document.body.appendChild(that.canvas);
         that._updateDynamics();
 
-        for (var i = 0; i < that.config.totalPoints; i++) {
+        for (let i = 0; i < that.config.totalPoints; i+=1) {
             internals.pointsArray.push(new Point(i));
         }
     }
@@ -109,8 +53,12 @@ export default class BackgroundCanvas {
     }
 
     _updateDynamics() {
-        this.canvas.width = internals.w = window.innerWidth;
-        this.canvas.height = internals.h = window.innerHeight;
+        const that = this;
+
+        internals.maxWidth = window.innerWidth;
+        internals.maxHeight = window.innerHeight;
+        that.canvas.width = internals.maxWidth;
+        that.canvas.height = internals.maxHeight;
     }
 
     _loop() {
@@ -123,22 +71,25 @@ export default class BackgroundCanvas {
 
         that.ctx.beginPath();
         that.ctx.globalAlpha = 1;
-        that.ctx.rect(0, 0 , internals.w, internals.h);
+        that.ctx.rect(0, 0, internals.maxWidth, internals.maxHeight);
         that.ctx.fillStyle = that.config.bgColor;
         that.ctx.fill();
         that.ctx.closePath();
 
-        for (var i = 0; i < internals.pointsArray.length; i += 1) {
-            var point = internals.pointsArray[i];
+        for (let i = 0; i < internals.pointsArray.length; i += 1) {
+            let point = internals.pointsArray[i];
 
             that.ctx.beginPath();
             that.ctx.globalAlpha = point.alpha;
             that.ctx.fillStyle = point.color;
-            that.ctx.arc(point.x, point.y, point.r, Math.PI * 2, false);
+            that.ctx.arc(point.x, point.y, point.r, PI * 2, false);
             that.ctx.fill();
             that.ctx.closePath();
 
-            internals.updatePoint(point);
+            point.checkUpdate({
+                maxWidth: internals.maxWidth,
+                maxHeight: internals.maxHeight
+            });
         }
     }
 }
