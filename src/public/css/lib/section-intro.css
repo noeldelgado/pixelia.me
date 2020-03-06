@@ -1,0 +1,21 @@
+section.intro {
+  max-width: 960px;
+
+  & p {
+    max-width: 580px;
+    margin-bottom: 1rem;
+  }
+
+  & ul {
+    font-size: 12px;
+  }
+
+  & li {
+    display: inline-block;
+    padding: 0 1.6em 0 0;
+  }
+
+  & li::before {
+    content: none;
+  }
+}

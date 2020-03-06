@@ -1,0 +1,91 @@
+doctype html
+html(lang="en")
+  head
+    title Noel Delgado — Web Developer
+    link(rel="icon" type="image/png" href="public/images/favicon.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="dns-prefetch" href="//fonts.googleapis.com")
+    link(rel="dns-prefetch" href="//google-analytics.com")
+    link(href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css")
+    link(rel="stylesheet", href="./public/css/style.css")
+  body
+    section.intro
+      h1 .
+      p Noel Delgado, Web Developer &amp; pseudo-<span class="-td">██</span> from Mexico
+      ul
+        li
+          a(href="https://codepen.io/noeldelgado")
+            span.-le CodePen
+            svg(width="14" height="14" viewBox="0 0 24 24")
+              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+        li
+          a(href="https://github.com/noeldelgado")
+            span.-le GitHub
+            svg(width="14" height="14" viewBox="0 0 24 24")
+              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+        li
+          a(href="https://twitter.com/pixelia_me")
+            span.-le Twitter
+            svg(width="14" height="14" viewBox="0 0 24 24")
+              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+        li
+          a(href="https://linkedin.com/in/noeldelgado")
+            span.-le LinkedIn
+            svg(width="14" height="14" viewBox="0 0 24 24")
+              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+        li pixelia.me@gmail.com
+
+    section.demos
+      h2 # Demos / Experiments / Animations
+      ul
+        each i in demos
+          li
+            a(href=`${i.url}`)
+              span.-le= i.name
+              // if i.image
+              //   img(src=`./public/images/${i.image}`)
+            // p.-desc= i.description
+
+    section.oss
+      h2 # OSS / Libs / Tools
+      ul
+        each i in oss
+          li
+            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window."))
+              span.-le= i.name
+              if i.external
+                svg(width="14" height="14" viewBox="0 0 24 24")
+                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+            p.-desc= i.description
+
+    section.projects
+      h2 # Projects
+      p Some projects I have contributed to
+      ul
+        each i in projects
+          li
+            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window."))
+              span.-le= i.name
+              if i.external
+                svg(width="14" height="14" viewBox="0 0 24 24")
+                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+
+    .iframe-wrapper
+      iframe(src="" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
+      button
+        svg(width="24" height="24" viewBox="0 0 24 24")
+          path(d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z")
+    .iframe-loader
+      div
+      div
+
+    script(src="./public/js/index.js")
+    script(type="text/javascript").
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23768287-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
