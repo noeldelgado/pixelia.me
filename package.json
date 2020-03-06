@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "scripts": {
     "start": "rm -rf .cache && parcel src/index.pug --out-dir docs",
-    "build": "rm -rf docs && parcel build src/index.pug --out-dir docs --public-url ./"
+    "build": "rm -rf docs && parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/"
   },
   "repository": {
     "type": "git",
