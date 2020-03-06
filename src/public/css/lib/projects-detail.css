@@ -5,14 +5,19 @@
   right: 0;
   bottom: 0;
   left: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
 
-  iframe {
+  & iframe {
     background: var(--color-bg);
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
-  & button {
+  & + button.iframe-close-button {
     position: fixed;
-    right: 3rem;
+    right: 1.5rem;
     top: 50%;
     transform: translate3d(200%, -50%, 0);
     width: 64px;
@@ -29,7 +34,7 @@
     }
   }
 
-  &.-loaded button {
+  &.-loaded + button.iframe-close-button {
     transform: translate3d(0, -50%, 0);
   }
 }
@@ -57,7 +62,20 @@
     &:nth-child(2) {
       background-color: var(--color-main);
       transition-delay: 200ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+  }
+
+  & .iframe-loading-text {
+    font-size: 1rem;
+    font-weight: 900;
+    margin: 0;
+    color: var(--color-bg);
+    transform: skew(0deg, -2deg);
+    opacity: 0;
+    transition: opacity 300ms linear;
   }
 
   &.-show > div {

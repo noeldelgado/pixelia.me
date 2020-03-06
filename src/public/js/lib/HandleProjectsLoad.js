@@ -16,10 +16,11 @@ export default class HandleProjectsLoad {
 
         that._demoWrapper = $('.iframe-wrapper');
         that._iframe = that._demoWrapper.querySelector('iframe');
-        that._demoCloseButton = $('.iframe-wrapper button');
+        that._demoCloseButton = $('.iframe-close-button');
         that._iframeLoader = $('.iframe-loader');
         that._iframeLoaderSecLayer = $('.iframe-loader > div:nth-child(1)');
         that._iframeLoaderMainLayer = $('.iframe-loader > div:nth-child(2)')
+        that._iframeLoadingText = $('.iframe-loading-text');
         that._previousFocusedElement = null;
     }
 
@@ -44,26 +45,33 @@ export default class HandleProjectsLoad {
     }
 
     _handleLinkClick(ev) {
-        const that = this;
-
         ev.preventDefault();
+
+        const that = this;
+        const iframeUrl = ev.currentTarget.href;
 
         document.body.style.overflow = 'hidden';
 
-        that._demoWrapper.style.opacity = 0;
-        that._demoWrapper.style.display = 'block';
-        that._iframe.src = ev.currentTarget.href;
-
-        that._iframeLoader.classList.add('-show');
         that._previousFocusedElement = document.activeElement;
+        that._iframeLoader.classList.add('-show');
+
         that._demoCloseButton.focus();
 
-        that._iframe.addEventListener('load', () => {
-            that._demoWrapper.style.opacity = 1;
-            that._iframeLoader.classList.add('-hide');
+        that._iframeLoaderMainLayer.addEventListener('transitionend', () => {
+            that._iframeLoadingText.style.opacity = 1;
 
-            that._iframeLoaderSecLayer.addEventListener('transitionend', () => {
-                that._demoWrapper.classList.add('-loaded');
+            that._demoWrapper.style.opacity = 0;
+            that._demoWrapper.style.display = 'block';
+            that._iframe.src = iframeUrl;
+
+            that._iframe.addEventListener('load', () => {
+                that._iframeLoadingText.style.opacity = 0;
+                that._iframeLoader.classList.add('-hide');
+                that._demoWrapper.style.opacity = 1;
+
+                that._iframeLoaderSecLayer.addEventListener('transitionend', () => {
+                    that._demoWrapper.classList.add('-loaded');
+                }, { once: true });
             }, { once: true });
         }, { once: true });
     }
