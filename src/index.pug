@@ -31,10 +31,11 @@ html(lang="en")
         each i in demos
           li
             a(href=`${i.url}`)
+              if i.image
+                .image-wrapper
+                  img(src=`./public/images/${i.image}` alt="")
               span.-le= i.name
-              // if i.image
-              //   img(src=`./public/images/${i.image}`)
-            // p.-desc= i.description
+              p.-desc= i.description
 
     section.oss
       h2 # OSS / Libs / Tools
@@ -50,7 +51,7 @@ html(lang="en")
 
     section.projects
       h2 # Projects
-      p Some projects I have contributed to
+      p.-desc Some projects I have contributed to
       ul
         each i in projects
           li

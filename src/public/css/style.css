@@ -29,8 +29,7 @@ body {
 }
 
 a {
-  display: flex;
-  align-items: center;
+  display: block;
   min-height: 24px;
   color: var(--color-main);
   text-decoration: none;
@@ -126,7 +125,7 @@ section {
   }
 
   & .-desc {
-    font-size: 0.857em;
+    font-size: 0.85714em;
     color: var(--color-text-darker);
  }
 }
