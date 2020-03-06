@@ -13,27 +13,15 @@ html(lang="en")
       h1 .
       p Noel Delgado, Web Developer &amp; pseudo-<span class="-td">██</span> from Mexico
       ul
-        li
-          a(href="https://codepen.io/noeldelgado")
-            span.-le CodePen
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li
-          a(href="https://github.com/noeldelgado")
-            span.-le GitHub
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li
-          a(href="https://twitter.com/pixelia_me")
-            span.-le Twitter
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li
-          a(href="https://linkedin.com/in/noeldelgado")
-            span.-le LinkedIn
-            svg(width="14" height="14" viewBox="0 0 24 24")
-              path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-        li pixelia.me@gmail.com
+        each i in social
+          li
+            if i.url
+              a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+                span.-le= i.text
+                svg(width="14" height="14" viewBox="0 0 24 24")
+                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+            else
+              span= i.text
 
     section.demos
       h2 # Demos / Experiments / Animations
@@ -51,7 +39,7 @@ html(lang="en")
       ul
         each i in oss
           li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window."))
+            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
               span.-le= i.name
               if i.external
                 svg(width="14" height="14" viewBox="0 0 24 24")
@@ -64,7 +52,7 @@ html(lang="en")
       ul
         each i in projects
           li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window."))
+            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
               span.-le= i.name
               if i.external
                 svg(width="14" height="14" viewBox="0 0 24 24")
