@@ -17,8 +17,9 @@ section.demos {
 
   & .image-wrapper  {
     margin-bottom: 0.25rem;
-    border-radius: 2px;
+    border-radius: 3px;
     overflow: hidden;
+    transform: translate3d(0, 0, 0);
   }
 
   & p {
