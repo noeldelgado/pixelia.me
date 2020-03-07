@@ -22,6 +22,8 @@ export default class HandleProjectsLoad {
         that._iframeLoaderSecLayer = $('.iframe-loader > div:nth-child(1)');
         that._iframeLoaderMainLayer = $('.iframe-loader > div:nth-child(2)')
         that._iframeLoadingText = $('.iframe-loading-text');
+        that._iframeLoadingTextTitle = $('.iframe-loading-text .title');
+        that._iframeLoadingTextDescription = $('.iframe-loading-text .description');
         that._previousFocusedElement = null;
     }
 
@@ -51,11 +53,17 @@ export default class HandleProjectsLoad {
         ev.preventDefault();
 
         const that = this;
-        const iframeUrl = ev.currentTarget.href;
+        const target = ev.currentTarget;
+        const iframeUrl = target.href;
+        const projectName = target.dataset.title;
+        const projectDescription = target.dataset.description;
 
         document.body.style.overflow = 'hidden';
 
         that._previousFocusedElement = document.activeElement;
+
+        that._iframeLoadingTextTitle.innerHTML = projectName;
+        that._iframeLoadingTextDescription.innerHTML = projectDescription;
         that._iframeLoader.classList.add('-show');
 
         that._demoCloseButton.focus();

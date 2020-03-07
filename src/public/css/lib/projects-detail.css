@@ -51,6 +51,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
+    pointer-events: all;
 
     transform: scale(1, 1.1) skew(0, 2deg) translate3d(0, -100vh, 0);
     transition: transform 400ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
@@ -72,10 +73,27 @@
     font-size: 1rem;
     font-weight: 900;
     margin: 0;
+    text-align: center;
     color: var(--color-bg);
     transform: skew(0deg, -2deg);
     opacity: 0;
     transition: opacity 300ms linear;
+
+    & .title,
+    & .description {
+      display: inline-block;
+      padding: .25rem 1rem;
+    }
+
+    & .title {
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    & .description {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
   }
 
   &.-show > div {
