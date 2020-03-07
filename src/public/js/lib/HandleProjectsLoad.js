@@ -9,11 +9,13 @@ export default class HandleProjectsLoad {
         const that = this;
 
         Object.assign(that.config = {}, {
+            el: document.createElement('div'),
             links: null
         }, config);
 
         if (!that.config.links) return;
 
+        that.events = {};
         that._isActive = false;
         that._demoWrapper = $('.iframe-wrapper');
         that._iframe = that._demoWrapper.querySelector('iframe');
@@ -27,6 +29,10 @@ export default class HandleProjectsLoad {
         that._previousFocusedElement = null;
     }
 
+    get element() {
+        return this.config.el;
+    }
+
     run() {
         const that = this;
 
@@ -37,6 +43,9 @@ export default class HandleProjectsLoad {
 
     _bindEvents() {
         const that = this;
+
+        that.events.projectShow = new CustomEvent('projectShow');
+        that.events.projectHide = new CustomEvent('projectHide');
 
         that._handleLinkClick = that._handleLinkClick.bind(that);
         that._handleCloseIframe = that._handleCloseIframe.bind(that);
@@ -58,10 +67,8 @@ export default class HandleProjectsLoad {
         const projectName = target.dataset.title;
         const projectDescription = target.dataset.description;
 
-        document.body.classList.add('-prevent-scrolling');
-
+        that.element.dispatchEvent(that.events.projectShow);
         that._previousFocusedElement = document.activeElement;
-
         that._iframeLoadingTextTitle.innerHTML = projectName;
         that._iframeLoadingTextDescription.innerHTML = projectDescription;
         that._iframeLoader.classList.add('-show');
@@ -118,7 +125,7 @@ export default class HandleProjectsLoad {
 
             that._iframeLoaderMainLayer.addEventListener('transitionend', () => {
                 that._iframe.src = '';
-                document.body.classList.remove('-prevent-scrolling');
+                that.element.dispatchEvent(that.events.projectHide);
 
                 if (that._previousFocusedElement) {
                     that._previousFocusedElement.focus();
