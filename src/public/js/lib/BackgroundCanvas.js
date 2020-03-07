@@ -20,11 +20,12 @@ export default class BackgroundCanvas {
             bgColor: '#000'
         }, config);
 
+        that.raf = null;
         that.canvas = document.createElement('canvas');
         that.ctx = that.canvas.getContext('2d');
         if (!that.ctx) return;
 
-        document.body.appendChild(that.canvas);
+        document.body.insertBefore(that.canvas, document.body.firstElementChild);
         that._updateDynamics();
 
         for (let i = 0; i < that.config.totalPoints; i+=1) {
@@ -39,6 +40,16 @@ export default class BackgroundCanvas {
         that._loop();
 
         return that;
+    }
+
+    pause() {
+        window.cancelAnimationFrame(this.raf);
+        return this;
+    }
+
+    restart() {
+        this._loop();
+        return this;
     }
 
     _bindEvents() {
@@ -62,7 +73,7 @@ export default class BackgroundCanvas {
     }
 
     _loop() {
-        window.requestAnimationFrame(this._loop);
+        this.raf = window.requestAnimationFrame(this._loop);
         this._draw();
     }
 
