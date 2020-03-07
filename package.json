@@ -2,15 +2,16 @@
   "name": "pixelia.me",
   "version": "0.2.1",
   "scripts": {
-    "start": "rm -rf .cache && parcel src/index.pug --out-dir docs",
-    "build": "rm -rf docs && parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/"
+    "start": "parcel src/index.pug --out-dir docs",
+    "build": "parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
+    "svg": "svg-sprite -s --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --si --sx --shape-id-generator=svg-%s --dest=src src/svgs/*.svg"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noeldelgado/pixelia.me.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Noel Delgado <pixelia.me@gmail.com> (http://pixelia.me/)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/noeldelgado/pixelia.me/issues"
@@ -22,5 +23,6 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-modules": "^1.5.0",
     "pug": "^2.0.4"
-  }
+  },
+  "dependencies": {}
 }

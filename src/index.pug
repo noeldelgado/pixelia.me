@@ -11,6 +11,7 @@ html(lang="en")
     link(href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css")
     link(rel="stylesheet", href="./public/css/style.css")
   body
+    <svg width="0" height="0" style="position:absolute"><symbol preserveAspectRatio="none" viewBox="0 0 969 26" id="svg-loader-wave-bottom" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h970C852 0 870 19.974 797 23.969c-48.807 2.67-64.89-16.687-139-16.978-36.736-.144-86.45 17.982-164 18.975-71.235.912-120.388-16.92-159-16.978-88.224-.132-114.267 15.762-172 12.983C80 17.977 121 1 0 0z"/></symbol><symbol preserveAspectRatio="none" viewBox="0 0 969 26" id="svg-loader-wave-top" xmlns="http://www.w3.org/2000/svg"><path d="M0 26c121-.999 80-17.977 163-21.971 57.733-2.78 83.776 13.115 172 12.983 38.612-.058 87.765-17.89 159-16.978 77.55.993 127.264 19.12 164 18.975 74.11-.29 90.193-19.649 139-16.978C870 6.026 852 26 970 26H0z"/></symbol></svg>
     .wrapper
       section.intro
         h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">██</span> from Mexico
@@ -69,10 +70,19 @@ html(lang="en")
         path(d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z")
     .iframe-loader
       div
+        svg.loader-wave-top
+          use('xlink:href'="#svg-loader-wave-top")
+        svg.loader-wave-bottom
+          use('xlink:href'="#svg-loader-wave-bottom")
       div
+        svg.loader-wave-top
+          use('xlink:href'="#svg-loader-wave-top")
+        svg.loader-wave-bottom
+          use('xlink:href'="#svg-loader-wave-bottom")
         .iframe-loading-text
           p.loading Loading
           span.title
+          br
           span.description
 
     script(src="./public/js/index.js")
