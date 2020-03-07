@@ -15,27 +15,27 @@
     height: 100%;
   }
 
-  & + button.iframe-close-button {
-    position: fixed;
-    right: 1.5rem;
-    top: 50%;
-    transform: translate3d(200%, -50%, 0);
-    width: 64px;
-    height: 64px;
-    background: black;
-    border-radius: 50%;
-    color: white;
-    border: none;
-    transition: transform 300ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
-
-    & svg {
-      display: block;
-      margin: 0 auto;
-    }
-  }
-
   &.-loaded + button.iframe-close-button {
     transform: translate3d(0, -50%, 0);
+  }
+}
+
+button.iframe-close-button {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translate3d(200%, -50%, 0);
+  width: 64px;
+  height: 64px;
+  background: black;
+  border-radius: 50%;
+  color: white;
+  border: none;
+  transition: transform 300ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+
+  & svg {
+    display: block;
+    margin: 0 auto;
   }
 }
 
