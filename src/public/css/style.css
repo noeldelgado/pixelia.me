@@ -22,10 +22,20 @@
 }
 
 body {
-  padding: 2rem 1rem;
+  padding: 3.25rem 1rem 1rem;
   font-family: 'Droid Sans Mono', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0.4rem;
+    background: linear-gradient(to right, var(--color-main), var(--color-sec));
+  }
 }
 
 a {
