@@ -1,0 +1,22 @@
+.page-top-wave {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 20px;
+  background-image: url('../../images/svg/top-wave.svg');
+  background-position: 0 0;
+  background-size: calc(969px * 4) 20px;
+  background-repeat: repeat;
+  animation: page-top-wave 10s infinite linear;
+
+  &.-pause {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes page-top-wave {
+  100% {
+    background-position: calc(969px * 4) 0;
+  }
+}

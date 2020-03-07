@@ -1,5 +1,5 @@
 section.intro {
-  padding-bottom: 2.25rem;
+  padding: 4rem 0 2.5rem;
 
   & p {
     max-width: 580px;
@@ -7,7 +7,7 @@ section.intro {
   }
 
   & ul {
-    font-size: 12px;
+    font-size: 0.85714rem;
   }
 
   & li {
