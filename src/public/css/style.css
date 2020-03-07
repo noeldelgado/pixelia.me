@@ -11,6 +11,7 @@
   --color-main: hsl(168, 100%, 75%);
   --color-visited: hsl(166, 25%, 75%);
   --color-sec: rgba(161, 170, 243, 1);
+  --scrollbar-width: 16;
 
   font-size: 14px;
   line-height: 1.61803398875;
@@ -22,7 +23,7 @@
 }
 
 body {
-  padding: 3.25rem 1rem 1rem;
+  padding: 3.25rem 0 1rem;
   font-family: 'Droid Sans Mono', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -35,6 +36,11 @@ body {
     left: 0;
     height: 0.4rem;
     background: linear-gradient(to right, var(--color-main), var(--color-sec));
+  }
+
+  &.-prevent-scrolling {
+    padding-right: var(--scrollbar-width);
+    overflow: hidden;
   }
 }
 
@@ -152,4 +158,9 @@ canvas {
 
  /* --------------------- */
 
+.wrapper {
+  max-width: calc(960px + 2rem);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 .-td { color: var(--color-text-darker) }

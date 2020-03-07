@@ -58,7 +58,7 @@ export default class HandleProjectsLoad {
         const projectName = target.dataset.title;
         const projectDescription = target.dataset.description;
 
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('-prevent-scrolling');
 
         that._previousFocusedElement = document.activeElement;
 
@@ -118,7 +118,7 @@ export default class HandleProjectsLoad {
 
             that._iframeLoaderMainLayer.addEventListener('transitionend', () => {
                 that._iframe.src = '';
-                document.body.style.overflow = '';
+                document.body.classList.remove('-prevent-scrolling');
 
                 if (that._previousFocusedElement) {
                     that._previousFocusedElement.focus();

@@ -11,55 +11,56 @@ html(lang="en")
     link(href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css")
     link(rel="stylesheet", href="./public/css/style.css")
   body
-    section.intro
-      h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">██</span> from Mexico
-      ul
-        each i in social
-          li
-            if i.url
-              a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
-                span.-le= i.text
-                svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
-                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-            else
-              span= i.text
+    .wrapper
+      section.intro
+        h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">██</span> from Mexico
+        ul
+          each i in social
+            li
+              if i.url
+                a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+                  span.-le= i.text
+                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
+                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+              else
+                span= i.text
 
-    section.demos
-      h2 # Demos / Experiments / Animations
-      ul
-        each i in demos
-          li
-            a(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
-              if i.image
-                .image-wrapper
-                  img(src=`./public/images/${i.image}` srcset=`./public/images/${i.image.replace('.png', '')}@2x.png 2x` alt="")
-              span.-le= i.name
-              p.-desc= i.description
+      section.demos
+        h2 # Demos / Experiments / Animations
+        ul
+          each i in demos
+            li
+              a(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
+                if i.image
+                  .image-wrapper
+                    img(src=`./public/images/${i.image}` srcset=`./public/images/${i.image.replace('.png', '')}@2x.png 2x` alt="")
+                span.-le= i.name
+                p.-desc= i.description
 
-    section.oss
-      h2 # OSS / Libs / Tools
-      ul
-        each i in oss
-          li
-            a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
-              span.-le= i.name
-              if i.external
-                svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
-                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-              p.-desc= i.description
+      section.oss
+        h2 # OSS / Libs / Tools
+        ul
+          each i in oss
+            li
+              a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                span.-le= i.name
+                if i.external
+                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
+                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                p.-desc= i.description
 
-    section.projects
-      h2 # Projects
-      p.-desc Some projects I have contributed to
-      ul
-        each i in projects
-          li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
-              span.-le= i.name
-              if i.external
-                svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
-                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-              p.-desc= i.description
+      section.projects
+        h2 # Projects
+        p.-desc Some projects I have contributed to
+        ul
+          each i in projects
+            li
+              a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                span.-le= i.name
+                if i.external
+                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
+                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                p.-desc= i.description
 
     .iframe-wrapper
       iframe(src="" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
