@@ -4,7 +4,7 @@ section.oss {
   & ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 0 1rem;
+    grid-gap: 0 1.2rem;
   }
 
   & li {

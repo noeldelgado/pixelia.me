@@ -3,8 +3,8 @@ section.demos {
 
   & ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 2rem 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1.2rem;
   }
 
   & li {
@@ -17,6 +17,8 @@ section.demos {
 
   & .image-wrapper  {
     margin-bottom: 0.25rem;
+    border-radius: 2px;
+    overflow: hidden;
   }
 
   & p {

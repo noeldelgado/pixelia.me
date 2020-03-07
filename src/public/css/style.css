@@ -76,8 +76,12 @@ img {
   max-width: 100%;
 }
 
-p, h2 {
+h1, h2, p {
   margin-bottom: .5rem;
+}
+
+h1, h2 {
+  font-size: 1rem;
 }
 
 ul {
@@ -103,13 +107,7 @@ section {
   padding: 0 0 4rem;
 
   & h2 {
-    /* position: absolute; */
-    /* top: 3rem; */
-    /* right: 100%; */
-    font-size: 1rem;
     text-transform: uppercase;
-    /* writing-mode: vertical-lr; */
-    /* transform: rotate(180deg); */
   }
 
   & ul {
