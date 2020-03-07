@@ -4,10 +4,12 @@ import { randomInt } from './utils';
 
 const internals = {
     COLORS: [
-        'rgba(238, 170, 238, .25)',
-        'rgba(238, 170, 238, .75)',
-        'rgba(153, 255, 235, .25)',
-        'rgba(153, 255, 235, .75)'
+        'rgba(238, 170, 238, .3)',
+        'rgba(238, 170, 238, .8)',
+        'rgba(153, 255, 235, .3)',
+        'rgba(153, 255, 235, .8)',
+        'rgba(161, 170, 243, .3)',
+        'rgba(161, 170, 243, .8)'
     ],
     MAX_POINT_SPEED: 0.05,
     MIN_POINT_SPEED: -0.05,
