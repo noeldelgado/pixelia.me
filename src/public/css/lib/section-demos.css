@@ -1,10 +1,10 @@
 section.demos {
-  max-width: 960px;
+  padding-bottom: 4.6rem;
 
   & ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 2rem 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1.2rem;
   }
 
   & li {
@@ -17,6 +17,9 @@ section.demos {
 
   & .image-wrapper  {
     margin-bottom: 0.25rem;
+    border-radius: 3px;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
   }
 
   & p {

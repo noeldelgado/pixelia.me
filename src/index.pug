@@ -11,65 +11,81 @@ html(lang="en")
     link(href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css")
     link(rel="stylesheet", href="./public/css/style.css")
   body
-    section.intro
-      h1 .
-      p Noel Delgado, Web Developer &amp; pseudo-<span class="-td">██</span> from Mexico
-      ul
-        each i in social
-          li
-            if i.url
-              a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
-                span.-le= i.text
-                svg(width="14" height="14" viewBox="0 0 24 24")
-                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-            else
-              span= i.text
+    // <svg width="0" height="0" style="position:absolute"><symbol preserveAspectRatio="none" viewBox="0 0 969 26" id="svg-loader-wave-bottom" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h970C852 0 870 19.974 797 23.969c-48.807 2.67-64.89-16.687-139-16.978-36.736-.144-86.45 17.982-164 18.975-71.235.912-120.388-16.92-159-16.978-88.224-.132-114.267 15.762-172 12.983C80 17.977 121 1 0 0z"/></symbol><symbol preserveAspectRatio="none" viewBox="0 0 969 26" id="svg-loader-wave-top" xmlns="http://www.w3.org/2000/svg"><path d="M0 26c121-.999 80-17.977 163-21.971 57.733-2.78 83.776 13.115 172 12.983 38.612-.058 87.765-17.89 159-16.978 77.55.993 127.264 19.12 164 18.975 74.11-.29 90.193-19.649 139-16.978C870 6.026 852 26 970 26H0z"/></symbol></svg>
+    include svg-sprite-symbol/svg/sprite.symbol.svg
+    .page-top-wave
+    .wrapper
+      section.intro
+        h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">██</span> from Mexico
+        ul
+          each i in social
+            li
+              if i.url
+                a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+                  span.-le= i.text
+                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
+                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+              else
+                span= i.text
 
-    section.demos
-      h2 # Demos / Experiments / Animations
-      ul
-        each i in demos
-          li
-            a(href=`${i.url}`)
-              if i.image
-                .image-wrapper
-                  img(src=`./public/images/${i.image}` alt="")
-              span.-le= i.name
-              p.-desc= i.description
+      section.demos
+        h2 # Demos / Experiments / Animations
+        ul
+          each i in demos
+            li
+              a(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
+                if i.image
+                  .image-wrapper
+                    img(src=`./public/images/${i.image}` srcset=`./public/images/${i.image.replace('.png', '')}@2x.png 2x` alt="")
+                span.-le= i.name
+                p.-desc= i.description
 
-    section.oss
-      h2 # OSS / Libs / Tools
-      ul
-        each i in oss
-          li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
-              span.-le= i.name
-              if i.external
-                svg(width="14" height="14" viewBox="0 0 24 24")
-                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
-            p.-desc= i.description
+      section.oss
+        h2 # OSS / Libs / Tools
+        ul
+          each i in oss
+            li
+              a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                span.-le= i.name
+                if i.external
+                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
+                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                p.-desc= i.description
 
-    section.projects
-      h2 # Projects
-      p.-desc Some projects I have contributed to
-      ul
-        each i in projects
-          li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
-              span.-le= i.name
-              if i.external
-                svg(width="14" height="14" viewBox="0 0 24 24")
-                  path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+      section.projects
+        h2 # Projects
+        p.-desc Some projects I have contributed to
+        ul
+          each i in projects
+            li
+              a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                span.-le= i.name
+                if i.external
+                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
+                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                p.-desc= i.description
 
     .iframe-wrapper
-      iframe(src="" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
+      iframe(src="" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
     button.iframe-close-button(aria-label="Close project detail")
       svg(width="24" height="24" viewBox="0 0 24 24" aria-hidden="true")
         path(d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z")
     .iframe-loader
       div
+        svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
+          use('xlink:href'="#svg-loader-wave-top")
+        svg.loader-wave-bottom("xmlns:xlink"="http://www.w3.org/1999/xlink")
+          use('xlink:href'="#svg-loader-wave-bottom")
       div
-        p.iframe-loading-text Loading...
+        svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
+          use('xlink:href'="#svg-loader-wave-top")
+        svg.loader-wave-bottom("xmlns:xlink"="http://www.w3.org/1999/xlink")
+          use('xlink:href'="#svg-loader-wave-bottom")
+        .iframe-loading-text
+          p.loading Loading
+          span.title
+          br
+          span.description
 
     script(src="./public/js/index.js")
     script(type="text/javascript").
