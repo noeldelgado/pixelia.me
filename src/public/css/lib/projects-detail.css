@@ -53,7 +53,7 @@ button.iframe-close-button {
     height: 100vh;
     pointer-events: all;
 
-    transform: scale(1, 1.1) skew(0, 2deg) translate3d(0, -100vh, 0);
+    transform: perspective(1px) scale(1, 1.1) skew(0, 2deg) translate3d(0, -100vh, 0);
     transition: transform 400ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
     will-change: transform;
 
@@ -75,7 +75,7 @@ button.iframe-close-button {
     margin: 0;
     text-align: center;
     color: var(--color-bg);
-    transform: skew(0deg, -2deg);
+    transform: perspective(1px) skew(0deg, -2deg);
     opacity: 0;
     transition: opacity 300ms linear;
 
@@ -97,10 +97,10 @@ button.iframe-close-button {
   }
 
   &.-show > div {
-    transform: scale(1, 1.1) skew(0, 2deg) translate3d(0, 0, 0);
+    transform: perspective(1px) scale(1, 1.1) skew(0, 2deg) translate3d(0, 0, 0);
  }
 
   &.-hide > div {
-    transform: scale(1, 1.1) skew(0, 2deg) translate3d(0, 100vh, 0);
+    transform: perspective(1px) scale(1, 1.1) skew(0, 2deg) translate3d(0, 100vh, 0);
   }
 }
