@@ -48,10 +48,9 @@ a {
       right: 0;
       bottom: 0;
       left: 0;
-      transform: translate3d(calc(-100% - 1px), 0, 0);
-      pointer-events: none;
-      mix-blend-mode: difference;
       background: var(--color-main);
+      mix-blend-mode: difference;
+      transform: translate3d(-101%, 0, 0);
       transition: transform 200ms ease;
     }
   }
