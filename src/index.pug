@@ -41,7 +41,7 @@ html(lang="en")
       ul
         each i in oss
           li
-            a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+            a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
               span.-le= i.name
               if i.external
                 svg(width="14" height="14" viewBox="0 0 24 24")
