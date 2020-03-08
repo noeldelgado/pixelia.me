@@ -4,14 +4,13 @@ html(lang="en")
     title Noel Delgado — Web Developer
     meta(name="description" content="Personal playground site of Mexican Web Developer Noel Delgado")
     meta(name="author" content="Noel Delgado")
-    link(rel="icon" type="image/png" href="public/images/favicon.png")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    link(rel="dns-prefetch" href="//fonts.googleapis.com")
-    link(rel="dns-prefetch" href="//google-analytics.com")
-    link(href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css")
+    link(rel="icon" type="image/png" href="public/images/favicon.png")
+    link(rel="preconnect" href="https://ajax.googleapis.com")
+    link(rel="preconnect" href="//fonts.googleapis.com")
+    link(rel="preconnect" href="//google-analytics.com")
     link(rel="stylesheet", href="./public/css/style.css")
   body
-    // <svg width="0" height="0" style="position:absolute"><symbol preserveAspectRatio="none" viewBox="0 0 969 26" id="svg-loader-wave-bottom" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h970C852 0 870 19.974 797 23.969c-48.807 2.67-64.89-16.687-139-16.978-36.736-.144-86.45 17.982-164 18.975-71.235.912-120.388-16.92-159-16.978-88.224-.132-114.267 15.762-172 12.983C80 17.977 121 1 0 0z"/></symbol><symbol preserveAspectRatio="none" viewBox="0 0 969 26" id="svg-loader-wave-top" xmlns="http://www.w3.org/2000/svg"><path d="M0 26c121-.999 80-17.977 163-21.971 57.733-2.78 83.776 13.115 172 12.983 38.612-.058 87.765-17.89 159-16.978 77.55.993 127.264 19.12 164 18.975 74.11-.29 90.193-19.649 139-16.978C870 6.026 852 26 970 26H0z"/></symbol></svg>
     include svg-sprite-symbol/svg/sprite.symbol.svg
     .page-top-wave
     .wrapper
@@ -36,7 +35,10 @@ html(lang="en")
               a(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
                 if i.image
                   .image-wrapper
-                    img(src=`./public/images/${i.image}` srcset=`./public/images/${i.image.replace('.png', '')}@2x.png 2x` alt="")
+                    picture
+                      source(srcset=`./public/images/${i.image.replace('.png', '.webp')} 1x, ./public/images/${i.image.replace('.png', '')}@2x.webp 2x` type="image/webp")
+                      source(srcset=`./public/images/${i.image} 1x, ./public/images/${i.image.replace('.png', '')}@2x.png 2x` type="image/jpeg")
+                      img(src=`./public/images/${i.image}` loading="lazy" width="400" height="225" alt="")
                 span.-le= i.name
                 p.-desc= i.description
 
@@ -87,7 +89,19 @@ html(lang="en")
           br
           span.description
 
-    script(src="./public/js/index.js")
+    script(src="./public/js/index.js" defer)
+    script(type="text/javascript").
+      WebFontConfig = {
+        google: { families: ['Droid+Sans+Mono&display=swap'] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
     script(type="text/javascript").
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-23768287-1']);
