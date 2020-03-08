@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  font-family: 'Droid Sans Mono', sans-serif;
+  font-family: 'Droid Sans Mono', monospace;
   background-color: var(--color-bg);
   color: var(--color-text);
 
@@ -84,6 +84,7 @@ a {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 h1, h2, p {
