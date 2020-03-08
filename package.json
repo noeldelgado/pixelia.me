@@ -1,6 +1,6 @@
 {
   "name": "pixelia.me",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "scripts": {
     "start": "parcel src/index.pug --out-dir docs",
     "build": "parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
