@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  font-family: 'Droid Sans Mono', sans-serif;
+  font-family: 'Droid Sans Mono', monospace;
   background-color: var(--color-bg);
   color: var(--color-text);
 
