@@ -34,7 +34,7 @@ html(lang="en")
               a(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
                 if i.image
                   .image-wrapper
-                    img(src=`./public/images/${i.image}` srcset=`./public/images/${i.image.replace('.png', '')}@2x.png 2x` alt="")
+                    img(src=`./public/images/${i.image}` srcset=`./public/images/${i.image.replace('.png', '')}@2x.png 2x` loading="lazy" width="400" height="225" alt="")
                 span.-le= i.name
                 p.-desc= i.description
 
