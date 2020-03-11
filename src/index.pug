@@ -36,9 +36,9 @@ html(lang="en")
                 if i.image
                   .image-wrapper
                     picture
-                      source(srcset=`./public/images/${i.image.replace('.png', '.webp')} 1x, ./public/images/${i.image.replace('.png', '')}@2x.webp 2x` type="image/webp")
-                      source(srcset=`./public/images/${i.image} 1x, ./public/images/${i.image.replace('.png', '')}@2x.png 2x` type="image/jpeg")
-                      img(src=`./public/images/${i.image}` loading="lazy" width="400" height="225" alt="")
+                      source(srcset=`./public/images/${i.image}.webp 1x, ./public/images/${i.image}@2x.webp 2x` type="image/webp")
+                      source(srcset=`./public/images/${i.image}.png 1x, ./public/images/${i.image}@2x.png 2x` type="image/jpeg")
+                      img(src=`./public/images/${i.image}.png` loading="lazy" width="400" height="225" alt="")
                 span.-le= i.name
                 p.-desc= i.description
 
