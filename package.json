@@ -1,9 +1,9 @@
 {
   "name": "pixelia.me",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "scripts": {
-    "start": "parcel src/index.pug --out-dir docs",
-    "build": "parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
+    "start": "parcel src/index.pug --out-dir tmp",
+    "build": "rm -rf .cache docs && parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
     "svg": "svg-sprite --symbol --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --symbol-inline --symbol-example --shape-id-generator=svg-%s --dest=src src/svgs/*.svg"
   },
   "repository": {
