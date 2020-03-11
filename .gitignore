@@ -2,5 +2,6 @@ src/data
 
 .DS_Store
 .cache
+tmp
 node_modules
 package-lock.json
