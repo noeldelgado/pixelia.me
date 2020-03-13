@@ -56,6 +56,7 @@ export default class HandleProjectsLoad {
 
             that.eyes.push(new FollowingEye({
                 el: link,
+                svg: svgEye.parentElement,
                 eye: svgEye
             }));
         });

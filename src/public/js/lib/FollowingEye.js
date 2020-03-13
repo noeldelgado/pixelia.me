@@ -15,9 +15,13 @@ export default class FollowingEye {
 
         Object.assign(that.config = {}, {
             el: null,
+            svg: null,
             eye: null
         }, config);
 
+        that.mouse = that.config.svg.createSVGPoint();
+        that.centerX = null;
+        that.centerY = null;
 
         that._updateDynamics()._bindEvents();
     }
@@ -35,7 +39,7 @@ export default class FollowingEye {
 
     _updateDynamics() {
         const that = this;
-        const { width, x, y } = that.config.eye.getBoundingClientRect();
+        const { width, x, y } = that.config.eye.getBBox();
 
         that.centerX = x + (width / 2);
         that.centerY = y + (width / 2);
@@ -45,8 +49,13 @@ export default class FollowingEye {
 
     _handleMouseMove(ev) {
         const that = this;
-        const dx = ev.clientX - that.centerX;
-        const dy = ev.clientY - that.centerY;
+
+        that.mouse.x = ev.clientX;
+        that.mouse.y = ev.clientY;
+
+        const point = that.mouse.matrixTransform(that.config.svg.getScreenCTM().inverse());
+        const dx = point.x - that.centerX;
+        const dy = point.y - that.centerY;
         const theta = atan2(dy, dx);
         const angle = (theta * 180 / PI) + 360;
 
