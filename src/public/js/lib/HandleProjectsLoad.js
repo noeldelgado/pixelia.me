@@ -1,5 +1,6 @@
 const { log } = console;
 
+import FollowingEye from './FollowingEye';
 import { $ } from './utils';
 
 export default class HandleProjectsLoad {
@@ -16,6 +17,7 @@ export default class HandleProjectsLoad {
         if (!that.config.links) return;
 
         that.events = {};
+        that.eyes = [];
         that._isActive = false;
         that._demoWrapper = $('.iframe-wrapper');
         that._iframe = that._demoWrapper.querySelector('iframe');
@@ -46,6 +48,17 @@ export default class HandleProjectsLoad {
 
         that.events.projectShow = new CustomEvent('projectShow');
         that.events.projectHide = new CustomEvent('projectHide');
+
+        that.config.links.forEach(link => {
+            let svgEye = link.querySelector('svg > g.eye');
+
+            if (!svgEye) return;
+
+            that.eyes.push(new FollowingEye({
+                el: link,
+                eye: svgEye
+            }));
+        });
 
         that._handleLinkClick = that._handleLinkClick.bind(that);
         that._handleCloseIframe = that._handleCloseIframe.bind(that);
