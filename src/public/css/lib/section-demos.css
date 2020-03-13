@@ -15,14 +15,67 @@ section.demos {
     }
   }
 
+  & a {
+    display: inline-block;
+  }
+
   & .image-wrapper  {
     margin-bottom: 0.25rem;
     border-radius: 3px;
     overflow: hidden;
+    background-color: var(--color-bg);
     transform: translate3d(0, 0, 0);
+
+    & img {
+      opacity: 1;
+    }
+  }
+
+  & .svg-eye-wrapper {
+    position: absolute;
+    width: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & svg {
+      display: block;
+      margin: 0;
+      opacity: 0;
+      transform: scale(.8);
+
+      & .eye {
+        transform-origin: center center;
+      }
+
+      & .eye-outer {
+        fill: none;
+        stroke: currentColor;
+      }
+
+      & .eye-inner {
+        fill: currentColor;
+      }
+    }
   }
 
   & p {
     margin: 0;
+  }
+
+  & a:hover,
+  & a:focus {
+    & .image-wrapper img {
+      opacity: .25;
+      transition: opacity 100ms linear;
+    }
+
+    & .svg-eye-wrapper {
+      & svg {
+        opacity: 1;
+        transform: scale(1) ;
+        transition: transform 200ms ease, opacity 100ms linear;
+      }
+    }
   }
 }

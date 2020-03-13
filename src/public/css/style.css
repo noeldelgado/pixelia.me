@@ -122,9 +122,8 @@ section {
   }
 
   & ul {
-
     & svg {
-      margin-left: 0.6em;
+      margin-left: 0.4em;
     }
   }
 
@@ -157,4 +156,12 @@ canvas {
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+a[target="_blank"] {
+  & .-le {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 .-td { color: var(--color-text-darker) }
