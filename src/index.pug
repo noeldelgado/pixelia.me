@@ -15,15 +15,15 @@ html(lang="en")
     .page-top-wave
     .wrapper
       section.intro
-        h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">██</span> from Mexico
+        h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
         ul
           each i in social
             li
               if i.url
                 a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
                   span.-le= i.text
-                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
-                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                    svg(width="14" height="14" aria-hidden="true")
+                      use('xlink:href'="#svg-launch-24px")
               else
                 span= i.text
 
@@ -54,9 +54,9 @@ html(lang="en")
             li
               a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
                 span.-le= i.name
-                if i.external
-                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
-                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                  if i.external
+                    svg(width="16" height="16" aria-hidden="true")
+                      use('xlink:href'="#svg-launch-24px")
                 p.-desc= i.description
 
       section.projects
@@ -67,16 +67,16 @@ html(lang="en")
             li
               a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
                 span.-le= i.name
-                if i.external
-                  svg(width="12" height="12" viewBox="0 0 24 24" aria-hidden="true")
-                    path(d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z")
+                  if i.external
+                    svg(width="16" height="16" aria-hidden="true")
+                      use('xlink:href'="#svg-launch-24px")
                 p.-desc= i.description
 
     .iframe-wrapper
       iframe(src="" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
     button.iframe-close-button(aria-label="Close project detail")
-      svg(width="24" height="24" viewBox="0 0 24 24" aria-hidden="true")
-        path(d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z")
+      svg(width="40" height="40" aria-hidden="true")
+        use('xlink:href'="#svg-close-24px")
     .iframe-loader
       div
         svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
