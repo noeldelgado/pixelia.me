@@ -25,3 +25,18 @@ export const getScrollbarWidth = () => {
 
     return scrollbarWidth;
 }
+
+/**
+ * Limit the amount of times a function is called.
+ * @see https://medium.com/@TCAS3/debounce-deep-dive-javascript-es6-e6f8d983b7a1
+ */
+export const debounce = (fn, time) => {
+    let timeout = null;
+
+    return function debounceFn() {
+        const functionCall = () => fn.apply(this, arguments);
+
+        clearTimeout(timeout);
+        timeout = setTimeout(functionCall, time);
+    }
+}
