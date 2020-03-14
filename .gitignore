@@ -1,4 +1,4 @@
-src/data
+src/data/*.js
 
 .DS_Store
 .cache
