@@ -109,9 +109,7 @@ html(lang="en")
 
     script(src="./public/js/index.js" defer)
     script(type="text/javascript").
-      WebFontConfig = {
-        google: { families: ['Droid+Sans+Mono&display=swap'] }
-      };
+      WebFontConfig = { google: { families: ['Droid+Sans+Mono&display=swap'] } };
       (function() {
         var wf = document.createElement('script');
         wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
@@ -120,9 +118,10 @@ html(lang="en")
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
       })();
-    script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
-    script.
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-23768287-1');
+    - if (process.env.NODE_ENV === 'production')
+      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
+      script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-23768287-1');
