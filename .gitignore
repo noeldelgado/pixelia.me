@@ -1,5 +1,6 @@
 src/data/*.js
 
+.env
 .DS_Store
 .cache
 tmp
