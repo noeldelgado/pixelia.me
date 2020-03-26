@@ -18,20 +18,21 @@ html(lang="en")
   body
     include svg-sprite-symbol/svg/sprite.symbol.svg
     .page-top-wave
-    .wrapper
-      section.intro
-        h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
-        ul
-          each i in social
-            li
-              if i.url
-                a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
-                  span.-le= i.text
-                    svg(width="14" height="14" aria-hidden="true")
-                      use('xlink:href'="#svg-launch-24px")
-              else
-                span= i.text
 
+    header.wrapper
+      h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
+      ul
+        each i in social
+          li
+            if i.url
+              a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+                span.-le= i.text
+                  svg(width="14" height="14" aria-hidden="true")
+                    use('xlink:href'="#svg-launch-24px")
+            else
+              span= i.text
+
+    main.wrapper
       section.demos
         h2 # Demos / Experiments / Animations
         ul
@@ -85,6 +86,9 @@ html(lang="en")
                       use('xlink:href'="#svg-launch-24px")
                 p.-desc= i.description
 
+    footer.wrapper
+      p.-td v#{version}
+
     .iframe-wrapper
       iframe(src="" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
     button.iframe-close-button(type="button" aria-label="Close project detail")
@@ -119,9 +123,9 @@ html(lang="en")
         s.parentNode.insertBefore(wf, s);
       })();
     - if (process.env.NODE_ENV === 'production')
-      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
+      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` async)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-23768287-1');
+        gtag('config', process.env.GA_KEY);
