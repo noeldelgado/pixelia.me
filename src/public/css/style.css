@@ -1,5 +1,5 @@
 @import './lib/top-wave';
-@import './lib/section-intro';
+@import './lib/header';
 @import './lib/section-demos';
 @import './lib/section-oss';
 @import './lib/section-projects';
@@ -159,7 +159,8 @@ canvas {
 .wrapper {
   max-width: calc(960px + 2rem);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 a[target="_blank"] {
