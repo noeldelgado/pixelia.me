@@ -4,6 +4,7 @@
 @import './lib/section-oss';
 @import './lib/section-projects';
 @import './lib/projects-detail';
+@import './lib/footer';
 
 :root {
   --color-bg: #1a1a1a;
@@ -134,7 +135,11 @@ section {
   & .-desc {
     font-size: 0.85714em;
     color: var(--color-text-darker);
- }
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
 }
 
 svg {
