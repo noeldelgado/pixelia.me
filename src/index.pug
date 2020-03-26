@@ -119,7 +119,7 @@ html(lang="en")
         s.parentNode.insertBefore(wf, s);
       })();
     - if (process.env.NODE_ENV === 'production')
-      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
+      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` async)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
