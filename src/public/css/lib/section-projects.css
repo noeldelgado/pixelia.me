@@ -1,9 +1,0 @@
-section.projects {
-
-  & ul {
-    /* columns: 3 auto; */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 0.6rem 1.2rem;
-  }
-}

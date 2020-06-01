@@ -1,0 +1,27 @@
+name: Lighthouse
+
+on: push
+
+jobs:
+  static-dist-dir:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Lighthouse using lighthouserc.json
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          configPath: .github/workflows/lighthouserc.json
+          temporaryPublicStorage: true
+          uploadArtifacts: true
+
+      - name: Run Lighthouse using budget.json
+        if: ${{ always() }}
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          budgetPath: .github/workflows/lighthouse-budget.json
+          configPath: .github/workflows/lighthouserc.json
+          temporaryPublicStorage: true
+          uploadArtifacts: true

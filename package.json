@@ -1,29 +1,20 @@
 {
-  "name": "pixelia.me",
   "version": "0.2.9",
   "scripts": {
-    "start": "parcel src/index.pug --out-dir tmp",
+    "start": "parcel src/index.pug --out-dir tmp --open",
     "build": "rm -rf docs && parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
+    "test:lh": "lhci autorun --collect.numberOfRuns=1 --config=./.github/workflows/lighthouserc.json",
+    "test:lhb": "lhci autorun --collect.numberOfRuns=1 --collect.staticDistDir=./docs --assert.budgetsFile=.github/workflows/lighthouse-budget.json",
     "svg": "svg-sprite --symbol --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --symbol-inline --symbol-example --shape-id-generator=svg-%s --dest=src src/svgs/*.svg",
     "convert-demo-images": "./scripts/images.sh ./src/data/images/demos ./src/public/images/demos"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/noeldelgado/pixelia.me.git"
-  },
-  "keywords": [],
   "author": "Noel Delgado <pixelia.me@gmail.com> (http://pixelia.me/)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/noeldelgado/pixelia.me/issues"
-  },
-  "homepage": "https://github.com/noeldelgado/pixelia.me#readme",
+  "license": "MIT",
   "devDependencies": {
     "cssnano": "^4.1.10",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-cssnext": "^3.1.0",
     "postcss-modules": "^1.5.0",
     "pug": "^2.0.4"
-  },
-  "dependencies": {}
+  }
 }
