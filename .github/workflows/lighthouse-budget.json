@@ -4,11 +4,11 @@
     "resourceCounts": [
       {
         "resourceType": "script",
-        "budget": 1
+        "budget": 4
       },
       {
         "resourceType": "stylesheet",
-        "budget": 1
+        "budget": 2
       },
       {
         "resourceType": "image",
@@ -16,7 +16,7 @@
       },
       {
         "resourceType": "third-party",
-        "budget": 2
+        "budget": 6
       }
     ],
     "resourceSizes": [
@@ -26,15 +26,15 @@
       },
       {
         "resourceType": "script",
-        "budget": 20
+        "budget": 70
       },
       {
         "resourceType": "stylesheet",
-        "budget": 2
+        "budget": 4
       },
       {
         "resourceType": "image",
-        "budget": 50
+        "budget": 110
       }
     ]
   }
