@@ -15,6 +15,10 @@
         "budget": 0
       },
       {
+        "resourceType": "other",
+        "budget": 2
+      },
+      {
         "resourceType": "script",
         "budget": 4
       },
@@ -39,6 +43,10 @@
       {
         "resourceType": "image",
         "budget": 110
+      },
+      {
+        "resourceType": "other",
+        "budget": 22
       },
       {
         "resourceType": "script",
