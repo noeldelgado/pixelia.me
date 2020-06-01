@@ -1,6 +1,10 @@
 [
   {
     "path": "/*",
+    "timings": [
+      { "metric": "interactive", "budget": 4000 },
+      { "metric": "first-meaningful-paint", "budget": 2000 }
+    ],
     "resourceCounts": [
       { "resourceType": "font", "budget": 1 },
       { "resourceType": "image", "budget": 30 },
