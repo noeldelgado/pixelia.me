@@ -73,19 +73,17 @@ a {
     }
   }
 
-  &:visited {
-    color: var(--color-visited);
+  /* &:visited { */
+  /*   color: var(--color-visited); */
 
-    & > .-le::before {
-      background: var(--color-visited);
-    }
-  }
+  /*   & > .-le::before { */
+  /*     background: var(--color-visited); */
+  /*   } */
+  /* } */
 
-  &[target="_blank"] {
-    & > .-le {
-      display: inline-flex;
-      align-items: center;
-    }
+  &[target="_blank"] > .-le {
+    display: inline-flex;
+    align-items: center;
   }
 }
 
