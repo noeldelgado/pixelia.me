@@ -25,6 +25,10 @@
         "budget": 300
       },
       {
+        "resourceType": "document",
+        "budget": 10
+      },
+      {
         "resourceType": "script",
         "budget": 70
       },
