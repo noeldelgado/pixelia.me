@@ -18,6 +18,7 @@ jobs:
           uploadArtifacts: true
 
       - name: Run Lighthouse using budget.json
+        if: ${{ always() }}
         uses: treosh/lighthouse-ci-action@v3
         with:
           budgetPath: .github/workflows/lighthouse-budget.json
