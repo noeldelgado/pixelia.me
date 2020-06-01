@@ -22,9 +22,9 @@ html(lang="en")
 
     header.wrapper
       h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
-      ul
+      ul.header__list
         each i in social
-          li
+          li.header__list__item
             if i.url
               a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
                 span.-le= i.text
