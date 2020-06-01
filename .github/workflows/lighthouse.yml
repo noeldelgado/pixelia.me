@@ -18,7 +18,7 @@ jobs:
           uploadArtifacts: true
 
       - name: Run Lighthouse using budget.json
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           budgetPath: .github/workflows/lighthouse-budget.json
           configPath: .github/workflows/lighthouserc.json
