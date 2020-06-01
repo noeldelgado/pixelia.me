@@ -3,6 +3,10 @@
     "path": "/*",
     "resourceCounts": [
       {
+        "resourceType": "font",
+        "budget": 1
+      },
+      {
         "resourceType": "script",
         "budget": 4
       },
