@@ -12,8 +12,8 @@
         "categories:seo": ["error", {"minScore": 1}],
         "categories:pwa": ["error", {"minScore": 0.56}],
         "offscreen-images": ["error", {"maxLength": 7}],
-        "unused-javascript": ["error", {"maxLength": 3}],
-        "uses-rel-preconnect": ["error", {"maxLength": 1}],
+        "unused-javascript": "off",
+        "uses-rel-preconnect": "off",
         "offline-start-url": "off",
         "service-worker": "off",
         "works-offline": "off"
