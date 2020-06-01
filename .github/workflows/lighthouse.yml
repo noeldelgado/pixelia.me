@@ -8,11 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Run Lighthouse using lighthouserc.json
       - uses: actions/checkout@v2
-      - name: Run Lighthouse against a static dist dir
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          configPath: .github/workflows/lighthouserc.json
+          temporaryPublicStorage: true
+          uploadArtifacts: true
+
+      - name: Run Lighthouse using budget.json
+      - uses: actions/checkout@v2
         uses: treosh/lighthouse-ci-action@v2
         with:
           budgetPath: .github/workflows/lighthouse-budget.json
-          configPath: .github/workflows/lighthouserc.json
           temporaryPublicStorage: true
           uploadArtifacts: true
