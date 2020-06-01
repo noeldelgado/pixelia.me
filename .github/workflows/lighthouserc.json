@@ -13,6 +13,7 @@
         "categories:pwa": ["error", {"minScore": 0.56}],
         "offscreen-images": ["error", {maxLength": 7}],
         "unused-javascript": ["error", {"maxLength": 3}],
+        "uses-rel-preconnect": ["error", {"maxLength": 1}],
         "offline-start-url": "off",
         "service-worker": "off",
         "works-offline": "off"
