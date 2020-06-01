@@ -5,8 +5,9 @@ html(lang="en")
     meta(name="description" content="Personal playground site of Web Developer Noel Delgado")
     meta(name="author" content="Noel Delgado")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="theme-color" content="#80ffe6")
     link(rel="icon" type="image/png" href="public/images/favicon.ico")
-    link(rel="preconnect" href="https://ajax.googleapis.com")
+    // link(rel="preconnect" href="https://ajax.googleapis.com")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://www.googletagmanager.com")
     link(rel="preconnect" href="https://www.google-analytics.com")
@@ -15,17 +16,18 @@ html(lang="en")
     link(rel="icon" type="image/png" sizes="16x16" href="./public/images/favicon-16x16.png")
     link(rel="manifest" href="/site.webmanifest")
     link(rel="stylesheet", href="./public/css/style.css")
+    link(href="https://fonts.googleapis.com/css2?family=Droid+Sans+Mono&display=swap" rel="stylesheet")
   body
     include svg-sprite-symbol/svg/sprite.symbol.svg
     .page-top-wave
 
     header.wrapper
-      h1 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
-      ul
+      h1.mb05 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
+      ul.header__list
         each i in social
-          li
+          li.header__list__item.-dif
             if i.url
-              a(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+              a.-dif(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
                 span.-le= i.text
                   svg(width="14" height="14" aria-hidden="true")
                     use('xlink:href'="#svg-launch-24px")
@@ -34,13 +36,13 @@ html(lang="en")
 
     main.wrapper
       section.demos
-        h2 # Demos / Experiments / Animations
-        ul
+        h2.mb05.-ttu Demos / Experiments / Animations
+        ul.section__grid
           each i in demos
-            li
-              a(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
+            li.section__grid__item
+              a.section__grid__anchor(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
                 if i.image
-                  .image-wrapper
+                  .section__grid__image-wrapper
                     picture
                       source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.webp 1x, ./public/images/${i.image}.webp 2x` type="image/webp")
                       source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.webp 1x, ./public/images/${i.image}-616.webp 2x` type="image/webp")
@@ -52,9 +54,9 @@ html(lang="en")
                       source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.png 1x, ./public/images/${i.image}-544.png 2x` type="image/png")
                       source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.png 1x, ./public/images/${i.image}-454.png 2x` type="image/png")
 
-                      img(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt="")
-                    .svg-eye-wrapper
-                      svg(viewBox="0 0 100 100" width="100%" height="100%")
+                      img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt="")
+                    .svg-eye__wrapper
+                      svg.svg--eye(viewBox="0 0 100 100" width="100%" height="100%")
                         g(class="eye")
                           circle(class="eye-outer" stroke-width="6" cx="50" cy="50" r="46")
                           circle(class="eye-inner" cx="76" cy="50" r="20")
@@ -62,32 +64,31 @@ html(lang="en")
                 p.-desc= i.description
 
       section.oss
-        h2 # OSS / Libs / Tools
-        ul
+        h2.mb05.-ttu OSS / Libs / Tools
+        ul.section__grid.list--decimal
           each i in oss
             li
               a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
                 span.-le= i.name
                   if i.external
-                    svg(width="16" height="16" aria-hidden="true")
+                    svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
                       use('xlink:href'="#svg-launch-24px")
                 p.-desc= i.description
 
       section.projects
-        h2 # Projects
-        p.-desc Some projects I have contributed to
-        ul
+        h2.mb05.-ttu Projects
+        p.mb1.-desc Some projects I have contributed to
+        ul.section__grid.list--decimal
           each i in projects
             li
               a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
                 span.-le= i.name
                   if i.external
-                    svg(width="16" height="16" aria-hidden="true")
+                    svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
                       use('xlink:href'="#svg-launch-24px")
                 p.-desc= i.description
 
-    footer.wrapper
-      p.-td v#{version}
+    footer.wrapper.-td v#{version}
 
     .iframe-wrapper
       iframe(src="" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
@@ -95,37 +96,38 @@ html(lang="en")
       svg(width="40" height="40" aria-hidden="true")
         use('xlink:href'="#svg-close-24px")
     .iframe-loader
-      div
+      .iframe-loader__layer.--waves
         svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
           use('xlink:href'="#svg-loader-wave-top")
         svg.loader-wave-bottom("xmlns:xlink"="http://www.w3.org/1999/xlink")
           use('xlink:href'="#svg-loader-wave-bottom")
-      div
+      .iframe-loader__layer.--info
         svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
           use('xlink:href'="#svg-loader-wave-top")
         svg.loader-wave-bottom("xmlns:xlink"="http://www.w3.org/1999/xlink")
           use('xlink:href'="#svg-loader-wave-bottom")
         .iframe-loading-text
-          p.loading Loading
+          p.mb05.loading Loading
           span.title
           br
           span.description
 
-    script(src="./public/js/index.js" defer)
-    script(type="text/javascript").
-      WebFontConfig = { google: { families: ['Droid+Sans+Mono&display=swap'] } };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
+    // script(type="text/javascript").
+    //   WebFontConfig = { google: { families: ['Droid+Sans+Mono&display=swap'] } };
+    //   (function() {
+    //     var wf = document.createElement('script');
+    //     wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    //     wf.type = 'text/javascript';
+    //     wf.defer = 'true';
+    //     var s = document.getElementsByTagName('script')[0];
+    //     s.parentNode.insertBefore(wf, s);
+    //   })();
     - if (process.env.NODE_ENV === 'production')
-      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` async)
+      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` defer)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', process.env.GA_KEY);
+
+    script(src="./public/js/index.js" defer)
