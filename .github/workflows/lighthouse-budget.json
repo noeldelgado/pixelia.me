@@ -7,6 +7,10 @@
         "budget": 1
       },
       {
+        "resourceType": "image",
+        "budget": 30
+      },
+      {
         "resourceType": "script",
         "budget": 4
       },
@@ -15,19 +19,11 @@
         "budget": 2
       },
       {
-        "resourceType": "image",
-        "budget": 30
-      },
-      {
         "resourceType": "third-party",
         "budget": 6
       }
     ],
     "resourceSizes": [
-      {
-        "resourceType": "total",
-        "budget": 300
-      },
       {
         "resourceType": "document",
         "budget": 10
@@ -35,6 +31,10 @@
       {
         "resourceType": "font",
         "budget": 10
+      },
+      {
+        "resourceType": "image",
+        "budget": 110
       },
       {
         "resourceType": "script",
@@ -45,8 +45,8 @@
         "budget": 4
       },
       {
-        "resourceType": "image",
-        "budget": 110
+        "resourceType": "total",
+        "budget": 300
       }
     ]
   }
