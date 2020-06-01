@@ -118,12 +118,12 @@ html(lang="en")
         var wf = document.createElement('script');
         wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
         wf.type = 'text/javascript';
-        wf.async = 'true';
+        wf.defer = 'true';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
       })();
     - if (process.env.NODE_ENV === 'production')
-      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` async)
+      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` defer)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
