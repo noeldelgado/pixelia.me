@@ -29,6 +29,10 @@
         "budget": 10
       },
       {
+        "resourceType": "font",
+        "budget": 10
+      },
+      {
         "resourceType": "script",
         "budget": 70
       },
