@@ -3,6 +3,8 @@
   "scripts": {
     "start": "parcel src/index.pug --out-dir tmp --open",
     "build": "rm -rf docs && parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
+    "test:lh": "lhci autorun --collect.numberOfRuns=1 --config=./.github/workflows/lighthouserc.json",
+    "test:lhb": "lhci autorun --collect.numberOfRuns=1 --collect.staticDistDir=./docs --assert.budgetsFile=.github/workflows/lighthouse-budget.json",
     "svg": "svg-sprite --symbol --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --symbol-inline --symbol-example --shape-id-generator=svg-%s --dest=src src/svgs/*.svg",
     "convert-demo-images": "./scripts/images.sh ./src/data/images/demos ./src/public/images/demos"
   },
