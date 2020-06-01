@@ -7,7 +7,7 @@
         "budget": 1
       },
       {
-        "resourceType": "css",
+        "resourceType": "stylesheet",
         "budget": 1
       },
       {
@@ -25,7 +25,7 @@
         "budget": 20
       },
       {
-        "resourceType": "css",
+        "resourceType": "stylesheet",
         "budget": 2
       }
     ]
