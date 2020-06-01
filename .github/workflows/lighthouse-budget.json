@@ -1,7 +1,7 @@
 [
   {
     "path": "/*",
-    "resourceCount": [
+    "resourceCounts": [
       {
         "resourceType": "script",
         "budget": 1
