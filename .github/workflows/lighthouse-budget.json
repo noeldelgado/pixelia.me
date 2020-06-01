@@ -11,7 +11,7 @@
         "budget": 1
       },
       {
-        "resourceType": "images",
+        "resourceType": "image",
         "budget": 30
       },
       {
@@ -33,7 +33,7 @@
         "budget": 2
       },
       {
-        "resourceType": "images",
+        "resourceType": "image",
         "budget": 50
       }
     ]
