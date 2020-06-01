@@ -24,7 +24,7 @@ export default class HandleProjectsLoad {
         that._demoCloseButton = $('.iframe-close-button');
         that._iframeLoader = $('.iframe-loader');
         that._iframeLoaderSecLayer = $('.iframe-loader > div:nth-child(1)');
-        that._iframeLoaderMainLayer = $('.iframe-loader > div:nth-child(2)')
+        that._iframeLoaderMainLayer = $('.iframe-loader > div:nth-child(2)');
         that._iframeLoadingText = $('.iframe-loading-text');
         that._iframeLoadingTextTitle = $('.iframe-loading-text .title');
         that._iframeLoadingTextDescription = $('.iframe-loading-text .description');
