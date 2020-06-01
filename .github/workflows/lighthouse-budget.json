@@ -11,6 +11,10 @@
         "budget": 30
       },
       {
+        "resourceType": "media",
+        "budget": 0
+      },
+      {
         "resourceType": "script",
         "budget": 4
       },
