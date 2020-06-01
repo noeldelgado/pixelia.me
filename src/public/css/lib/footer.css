@@ -3,8 +3,4 @@ footer {
   padding: 2rem 0;
   font-size: 0.7rem;
   text-align: right;
-
-  & > p {
-    margin: 0;
-  }
 }
