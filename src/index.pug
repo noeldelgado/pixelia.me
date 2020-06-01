@@ -7,7 +7,7 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(name="theme-color" content="#80ffe6")
     link(rel="icon" type="image/png" href="public/images/favicon.ico")
-    link(rel="preconnect" href="https://ajax.googleapis.com")
+    // link(rel="preconnect" href="https://ajax.googleapis.com")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://www.googletagmanager.com")
     link(rel="preconnect" href="https://www.google-analytics.com")
@@ -16,6 +16,7 @@ html(lang="en")
     link(rel="icon" type="image/png" sizes="16x16" href="./public/images/favicon-16x16.png")
     link(rel="manifest" href="/site.webmanifest")
     link(rel="stylesheet", href="./public/css/style.css")
+    link(href="https://fonts.googleapis.com/css2?family=Droid+Sans+Mono&display=swap" rel="stylesheet")
   body
     include svg-sprite-symbol/svg/sprite.symbol.svg
     .page-top-wave
@@ -111,17 +112,16 @@ html(lang="en")
           br
           span.description
 
-    script(src="./public/js/index.js" defer)
-    script(type="text/javascript").
-      WebFontConfig = { google: { families: ['Droid+Sans+Mono&display=swap'] } };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.defer = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
+    // script(type="text/javascript").
+    //   WebFontConfig = { google: { families: ['Droid+Sans+Mono&display=swap'] } };
+    //   (function() {
+    //     var wf = document.createElement('script');
+    //     wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    //     wf.type = 'text/javascript';
+    //     wf.defer = 'true';
+    //     var s = document.getElementsByTagName('script')[0];
+    //     s.parentNode.insertBefore(wf, s);
+    //   })();
     - if (process.env.NODE_ENV === 'production')
       script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` defer)
       script.
@@ -129,3 +129,5 @@ html(lang="en")
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', process.env.GA_KEY);
+
+    script(src="./public/js/index.js" defer)
