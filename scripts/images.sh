@@ -5,9 +5,9 @@
 
 DIR_IN="$1"
 DIR_OUT="$2"
+FILES="${3:-*.png}"
 
-for f in $DIR_IN/*.png
-# for f in $DIR_IN/"$3"
+for f in $DIR_IN/$FILES
 do
   FILE_NAME="$(basename -s .png $f)"
   cp $f $DIR_OUT/ # copy original 800
