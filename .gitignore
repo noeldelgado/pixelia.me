@@ -3,7 +3,9 @@ src/data/*.js
 .env
 .DS_Store
 .cache
+.parcel-cache
 .lighthouseci
 tmp
 node_modules
 package-lock.json
+yarn.lock
