@@ -1,7 +1,7 @@
 {
   "version": "0.2.10",
   "scripts": {
-    "start": "parcel src/index.pug --out-dir tmp --open",
+    "start": "parcel src/index.pug --dist-dir tmp",
     "build": "rm -rf docs && parcel build src/index.pug --out-dir docs --public-url ./ && cp CNAME docs/",
     "test:lh": "lhci autorun --collect.numberOfRuns=1 --config=./.github/workflows/lighthouserc.json",
     "test:lhb": "lhci autorun --collect.numberOfRuns=1 --collect.staticDistDir=./docs --assert.budgetsFile=.github/workflows/lighthouse-budget.json",
@@ -11,10 +11,15 @@
   "author": "Noel Delgado <pixelia.me@gmail.com> (http://pixelia.me/)",
   "license": "MIT",
   "devDependencies": {
-    "cssnano": "^4.1.10",
-    "postcss-color-mod-function": "^3.0.3",
-    "postcss-cssnext": "^3.1.0",
-    "postcss-modules": "^1.5.0",
-    "pug": "^2.0.4"
+    "@parcel/packager-raw-url": "2.6.0",
+    "@parcel/transformer-pug": "2.6.0",
+    "@parcel/transformer-webmanifest": "2.6.0",
+    "parcel": "2.6.0",
+    "postcss": "8.4.14"
+  },
+  "@parcel/transformer-css": {
+    "drafts": {
+      "nesting": true
+    }
   }
 }
