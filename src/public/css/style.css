@@ -14,11 +14,12 @@
 
 :root {
   --color-bg: #1a1a1a;
+  --color-bg-lighter: color-mix(in srgb, #1a1a1a, white 10%);
   --color-text: #f0f0f0;
-  --color-text-darker: color-mod(var(--color-text) shade(36%));
-  --color-main: hsl(168, 100%, 75%);
-  --color-visited: hsl(166, 25%, 75%);
+  --color-text-darker: color-mix(in srgb, #f0f0f0 64%, black);
   --color-sec: rgba(161, 170, 243, 1);
+  --color-main: hsl(172deg 100% 56%);
+  --color-visited: hsl(172deg 25% 56%);
   --scrollbar-width: 16;
 
   font-size: 14px;
@@ -81,13 +82,13 @@ a {
     }
   }
 
-  /* &:visited { */
-  /*   color: var(--color-visited); */
+  &:visited {
+    color: var(--color-visited);
 
-  /*   & > .-le::before { */
-  /*     background: var(--color-visited); */
-  /*   } */
-  /* } */
+    & > .-le::before {
+      background: var(--color-visited);
+    }
+  }
 
   &[target="_blank"] > .-le {
     display: inline-flex;
