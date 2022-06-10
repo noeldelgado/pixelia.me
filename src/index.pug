@@ -40,7 +40,7 @@ html(lang="en")
         ul.section__grid
           each i in demos
             li.section__grid__item
-              a.section__grid__anchor(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
+              a.section__grid__anchor(href=`${i.url}` rel="noopener noreferrer" target="_blank" data-title=`${i.name}` data-description=`${i.description}`)
                 if i.image
                   .section__grid__image-wrapper
                     figure

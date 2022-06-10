@@ -1,10 +1,8 @@
 import { $, $$, getScrollbarWidth } from './lib/utils';
 // import BackgroundCanvas from './lib/BackgroundCanvas';
-import HandleProjectsLoad from './lib/HandleProjectsLoad';
 
 const internals = {};
 
-internals.body = document.body;
 internals.pageTopWave = $('.page-top-wave');
 
 // internals.backgroundCanvas = new BackgroundCanvas({
@@ -12,9 +10,25 @@ internals.pageTopWave = $('.page-top-wave');
 //     bgColor: getComputedStyle(document.body, null).getPropertyValue('background-color')
 // }).run();
 
-internals.projectsHandler = new HandleProjectsLoad({
-    links: $$('.demos a:not([target="_blank"]), .oss a:not([target="_blank"])')
-}).run();
+internals.loadHandler = async () => {
+  const HandleProjectsLoad = await import('./lib/HandleProjectsLoad');
+
+  const projectsHandler = new HandleProjectsLoad.default({
+    links: $$('.demos a, .oss a:not([target="_blank"])')
+  }).run();
+
+  projectsHandler.element.addEventListener('projectShow', () => {
+    document.body.classList.add('-prevent-scrolling');
+    internals.pageTopWave.classList.add('-pause');
+    internals.backgroundCanvas?.pause();
+  });
+
+  projectsHandler.element.addEventListener('projectHide', () => {
+    document.body.classList.remove('-prevent-scrolling');
+    internals.pageTopWave.classList.remove('-pause');
+    internals.backgroundCanvas?.restart();
+  });
+};
 
 internals.lastKnownScrollPosition = 0;
 internals.onScrollTicking = false;
@@ -39,23 +53,7 @@ internals.handleScrollUpdate = (scrollPos) => {
     }
 };
 
-internals.loadHandler = () => {
-    internals.projectsHandler.loaded();
-};
-
-internals.projectsHandler.element.addEventListener('projectShow', () => {
-    internals.body.classList.add('-prevent-scrolling');
-    internals.pageTopWave.classList.add('-pause');
-    // internals.backgroundCanvas.pause();
-});
-
-internals.projectsHandler.element.addEventListener('projectHide', () => {
-    internals.body.classList.remove('-prevent-scrolling');
-    internals.pageTopWave.classList.remove('-pause');
-    // internals.backgroundCanvas.restart();
-});
-
-window.addEventListener('scroll', internals.scrollHandler);
 window.addEventListener('load', internals.loadHandler);
+window.addEventListener('scroll', internals.scrollHandler);
 
 document.documentElement.style.setProperty('--scrollbar-width', `${getScrollbarWidth()}px`);
