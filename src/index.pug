@@ -1,28 +1,27 @@
 doctype html
 html(lang="en")
   head
-    title Noel Delgado — Web Developer
+    meta(charset="utf-8")
     meta(name="description" content="Personal playground site of Web Developer Noel Delgado")
     meta(name="author" content="Noel Delgado")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(name="theme-color" content="#80ffe6")
+    meta(name="theme-color" content="#1fffe1")
+    title Noel Delgado — Web Developer
     link(rel="icon" type="image/png" href="public/images/favicon.ico")
-    // link(rel="preconnect" href="https://ajax.googleapis.com")
-    link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://www.googletagmanager.com")
     link(rel="preconnect" href="https://www.google-analytics.com")
     link(rel="apple-touch-icon" sizes="180x180" href="./public/images/apple-touch-icon.png")
     link(rel="icon" type="image/png" sizes="32x32" href="./public/images/favicon-32x32.png")
     link(rel="icon" type="image/png" sizes="16x16" href="./public/images/favicon-16x16.png")
-    link(rel="manifest" href="/site.webmanifest")
+    link(rel="manifest" href="site.webmanifest")
     link(rel="stylesheet", href="./public/css/style.css")
-    link(href="https://fonts.googleapis.com/css2?family=Droid+Sans+Mono&display=swap" rel="stylesheet")
   body
     include svg-sprite-symbol/svg/sprite.symbol.svg
     .page-top-wave
 
     header.wrapper
-      h1.mb05 Noel Delgado, Developer &amp; pseudo-<span class="-td">███</span> from Mexico
+      h1 Noel Delgado
+      h2.mb05 Web Developer &amp; pseudo-<span class="-td">████████</span>
       ul.header__list
         each i in social
           li.header__list__item.-dif
@@ -36,35 +35,37 @@ html(lang="en")
 
     main.wrapper
       section.demos
-        h2.mb05.-ttu Demos / Experiments / Animations
+        h2.-ttu Demos / Animations / Interactions
+        p.mb1.-desc Stuff I do for fun
         ul.section__grid
           each i in demos
             li.section__grid__item
               a.section__grid__anchor(href=`${i.url}` rel="noopener noreferrer" data-title=`${i.name}` data-description=`${i.description}`)
                 if i.image
                   .section__grid__image-wrapper
-                    picture
-                      source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.webp 1x, ./public/images/${i.image}.webp 2x` type="image/webp")
-                      source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.webp 1x, ./public/images/${i.image}-616.webp 2x` type="image/webp")
-                      source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.webp 1x, ./public/images/${i.image}-544.webp 2x` type="image/webp")
-                      source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.webp 1x, ./public/images/${i.image}-454.webp 2x` type="image/webp")
+                    figure
+                      picture
+                        source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.webp 1x, ./public/images/${i.image}.webp 2x` type="image/webp")
+                        source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.webp 1x, ./public/images/${i.image}-616.webp 2x` type="image/webp")
+                        source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.webp 1x, ./public/images/${i.image}-544.webp 2x` type="image/webp")
+                        source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.webp 1x, ./public/images/${i.image}-454.webp 2x` type="image/webp")
 
-                      source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.png 1x, ./public/images/${i.image}.png 2x` type="image/png")
-                      source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.png 1x, ./public/images/${i.image}-616.png 2x` type="image/png")
-                      source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.png 1x, ./public/images/${i.image}-544.png 2x` type="image/png")
-                      source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.png 1x, ./public/images/${i.image}-454.png 2x` type="image/png")
+                        source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.png 1x, ./public/images/${i.image}.png 2x` type="image/png")
+                        source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.png 1x, ./public/images/${i.image}-616.png 2x` type="image/png")
+                        source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.png 1x, ./public/images/${i.image}-544.png 2x` type="image/png")
+                        source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.png 1x, ./public/images/${i.image}-454.png 2x` type="image/png")
 
-                      img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt="")
+                        img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt=`${i.name} - ${i.description}`)
+                      figcaption= i.description
                     .svg-eye__wrapper
                       svg.svg--eye(viewBox="0 0 100 100" width="100%" height="100%")
                         g(class="eye")
                           circle(class="eye-outer" stroke-width="6" cx="50" cy="50" r="46")
                           circle(class="eye-inner" cx="76" cy="50" r="20")
-                span.-le= i.name
-                p.-desc= i.description
 
       section.oss
-        h2.mb05.-ttu OSS / Libs / Tools
+        h2.-ttu OSS / Libs / Tools
+        p.mb1.-desc Some open-source contributions
         ul.section__grid.list--decimal
           each i in oss
             li
@@ -76,22 +77,38 @@ html(lang="en")
                 p.-desc= i.description
 
       section.projects
-        h2.mb05.-ttu Projects
+        h2.-ttu Projects
         p.mb1.-desc Some projects I have contributed to
         ul.section__grid.list--decimal
           each i in projects
             li
-              a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
-                span.-le= i.name
-                  if i.external
-                    svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
-                      use('xlink:href'="#svg-launch-24px")
-                p.-desc= i.description
+              if i.offline
+                div
+                  p.-td= i.name
+                  p.-desc= i.description
+              else
+                a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                  span.-le= i.name
+                    if i.external
+                      svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
+                        use('xlink:href'="#svg-launch-24px")
+                  p.-desc= i.description
 
-    footer.wrapper.-td v#{version}
+    footer.wrapper
+      ul.header__list
+        each i in social
+          li.header__list__item.-dif
+            if i.url
+              a.-dif(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
+                span.-le= i.text
+                  svg(width="14" height="14" aria-hidden="true")
+                    use('xlink:href'="#svg-launch-24px")
+            else
+              span= i.text
+      .-td v#{version}
 
     .iframe-wrapper
-      iframe(src="" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
+      iframe(src="about:blank" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
     button.iframe-close-button(type="button" aria-label="Close project detail")
       svg(width="40" height="40" aria-hidden="true")
         use('xlink:href'="#svg-close-24px")
@@ -112,22 +129,12 @@ html(lang="en")
           br
           span.description
 
-    // script(type="text/javascript").
-    //   WebFontConfig = { google: { families: ['Droid+Sans+Mono&display=swap'] } };
-    //   (function() {
-    //     var wf = document.createElement('script');
-    //     wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    //     wf.type = 'text/javascript';
-    //     wf.defer = 'true';
-    //     var s = document.getElementsByTagName('script')[0];
-    //     s.parentNode.insertBefore(wf, s);
-    //   })();
-    - if (process.env.NODE_ENV === 'production')
-      script(src=`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}` defer)
+    script(src="./public/js/index.js" type="module" defer)
+
+    if (process.env.NODE_ENV === 'production')
+      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', process.env.GA_KEY);
-
-    script(src="./public/js/index.js" defer)
+        gtag('config', 'UA-23768287-1');

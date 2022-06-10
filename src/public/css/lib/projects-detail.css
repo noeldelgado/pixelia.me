@@ -40,6 +40,7 @@
 }
 
 .iframe-loader {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -47,6 +48,7 @@
   height: 100vh;
   pointer-events: none;
 
+  &.-ready { display: block; }
   &.-show > div { transform: translate3d(0, 0, 0); }
   &.-hide > div { transform: translate3d(0, calc(100vh + 26px), 0); }
 }
