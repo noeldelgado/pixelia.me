@@ -50,7 +50,8 @@ body {
 
 a {
   display: inline-block;
-  min-height: 24px;
+  min-width: 48px;
+  min-height: 48px;
   color: var(--color-main);
   text-decoration: none;
   outline: none;
@@ -59,6 +60,7 @@ a {
     position: relative;
     display: inline-block;
     vertical-align: top;
+    align-self: center;
     overflow: hidden;
 
     &:before {
