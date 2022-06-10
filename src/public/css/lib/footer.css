@@ -1,6 +1,7 @@
 footer {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 2rem 0;
   font-size: 0.7rem;
-  text-align: right;
 }
