@@ -6,6 +6,7 @@ src/data/*.js
 .parcel-cache
 .lighthouseci
 tmp
+dist
 node_modules
 package-lock.json
 yarn.lock
