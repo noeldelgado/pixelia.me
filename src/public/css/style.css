@@ -69,7 +69,7 @@ a {
       left: 0;
       background: var(--color-main);
       mix-blend-mode: difference;
-      transform: translate3d(-101%, 0, 0);
+      transform: translate3d(calc(-100% - 1px), 0, 0);
       transition: transform 200ms ease;
     }
   }
@@ -101,7 +101,11 @@ img {
   height: auto;
 }
 
-h1, h2 {
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
   font-size: 1rem;
 }
 
@@ -110,11 +114,7 @@ ul { list-style: none; }
 section {
   position: relative;
   margin: 0 auto;
-  padding: 0 0 4rem;
-
-  &:last-of-type {
-    padding-bottom: 0;
-  }
+  padding: 0 0 6rem;
 }
 
 svg { fill: currentColor; }
@@ -129,7 +129,7 @@ canvas {
 
  /* --------------------- */
 .wrapper {
-  max-width: calc(960px + 2rem);
+  max-width: calc(1200px + 2rem);
   margin: 0 auto;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -170,29 +170,6 @@ canvas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1.2rem;
-}
-.section__grid__anchor:hover,
-.section__grid__anchor:focus {
-  & .section__grid__image {
-    opacity: .25;
-    transition: opacity 100ms linear;
-  }
-  & .svg--eye {
-    opacity: 1;
-    transform: scale(1) ;
-    transition: transform 200ms ease, opacity 100ms linear;
-  }
-}
-.section__grid__image-wrapper  {
-  margin-bottom: 0.25rem;
-  border-radius: 3px;
-  overflow: hidden;
-  background-color: var(--color-bg);
-  transform: translate3d(0, 0, 0);
-}
-.section__grid__image {
-  display: block;
-  opacity: 1;
 }
 
 .list--decimal {
