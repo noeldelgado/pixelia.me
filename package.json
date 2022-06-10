@@ -2,7 +2,9 @@
   "version": "0.2.11",
   "scripts": {
     "start": "parcel src/index.pug",
-    "build": "rm -rf docs && parcel build src/index.pug --dist-dir docs --public-url ./ && cp CNAME docs/",
+    "prebuild": "rm -rf docs",
+    "build": "parcel build src/index.pug --dist-dir docs --public-url ./ --no-cache",
+    "postbuild": "cp CNAME docs/",
     "test:lh": "lhci autorun --collect.numberOfRuns=1 --config=./.github/workflows/lighthouserc.json",
     "test:lhb": "lhci autorun --collect.numberOfRuns=1 --collect.staticDistDir=./docs --assert.budgetsFile=.github/workflows/lighthouse-budget.json",
     "svg": "svg-sprite --symbol --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --symbol-inline --symbol-example --shape-id-generator=svg-%s --dest=src src/svgs/*.svg",
