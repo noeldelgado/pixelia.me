@@ -1,0 +1,32 @@
+.TopWave {
+  --width: 969px;
+  --height: 20px;
+
+  position: absolute;
+  top: calc(var(--height) * -1);
+  right: 0;
+  left: 0;
+  transform: translate3d(0, 0, 0);
+  height: var(--height);
+  background-image: url('../../../images/svg/top-wave.svg');
+  background-position: 0 0;
+  background-size: calc(var(--width) * 4) var(--height);
+  background-repeat: repeat;
+  transition: transform 1000ms ease;
+  will-change: transform, background-position;
+  animation: TopWave 10s infinite linear;
+
+  &.-active {
+    transform: translate3d(0, var(--height), 0);
+  }
+
+  &.-pause {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes TopWave {
+  to {
+    background-position: calc(var(--width) * 4) 0;
+  }
+}
