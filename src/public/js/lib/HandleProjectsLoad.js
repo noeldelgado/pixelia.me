@@ -39,14 +39,9 @@ export default class HandleProjectsLoad {
         const that = this;
 
         that._bindEvents();
+        that._iframeLoader.classList.add('-ready');
 
         return that;
-    }
-
-    loaded() {
-        this._iframeLoader.classList.add('-ready');
-
-        return this;
     }
 
     _bindEvents() {
