@@ -13,6 +13,7 @@ jobs:
       - name: Run Lighthouse using lighthouserc.json
         uses: treosh/lighthouse-ci-action@v3
         with:
+          runs: 3
           configPath: .github/workflows/lighthouserc.json
           temporaryPublicStorage: true
           uploadArtifacts: true
@@ -21,6 +22,7 @@ jobs:
         if: ${{ always() }}
         uses: treosh/lighthouse-ci-action@v3
         with:
+          runs: 1
           budgetPath: .github/workflows/lighthouse-budget.json
           configPath: .github/workflows/lighthouserc.json
           temporaryPublicStorage: true
