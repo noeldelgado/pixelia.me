@@ -1,5 +1,5 @@
 {
-  "version": "0.2.11",
+  "version": "0.2.12",
   "scripts": {
     "start": "parcel src/index.pug",
     "prebuild": "rm -rf docs",
