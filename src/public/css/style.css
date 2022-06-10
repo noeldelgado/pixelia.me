@@ -1,6 +1,6 @@
-@import './lib/top-wave';
 @import './lib/header';
 @import './lib/section-demos';
+@import './lib/section-oss';
 @import './lib/projects-detail';
 @import './lib/footer';
 
@@ -56,7 +56,7 @@ a {
   text-decoration: none;
   outline: none;
 
-  & > .-le {
+  & .-le {
     position: relative;
     display: inline-block;
     vertical-align: top;
@@ -81,7 +81,7 @@ a {
   &:active,
   &:hover,
   &:focus {
-    & > .-le::before {
+    & .-le::before {
       transform: translate3d(0, 0, 0);
     }
   }
@@ -89,12 +89,12 @@ a {
   &:visited {
     color: var(--color-visited);
 
-    & > .-le::before {
+    & .-le::before {
       background: var(--color-visited);
     }
   }
 
-  &[target="_blank"] > .-le {
+  &[target="_blank"] .-le {
     display: inline-flex;
     align-items: center;
   }
