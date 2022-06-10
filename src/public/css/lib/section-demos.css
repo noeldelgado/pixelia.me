@@ -18,7 +18,7 @@ section.demos {
     }
     & .svg--eye {
       opacity: 1;
-      transform: scale(1) ;
+      transform: scale(1);
       transition: transform 200ms ease, opacity 100ms linear;
     }
     & figcaption {
@@ -46,6 +46,7 @@ section.demos {
       font-size: .85714em;
       text-align: center;
       color: var(--color-text-darker);
+      will-change: opacity;
     }
   }
 }
@@ -53,4 +54,5 @@ section.demos {
   display: block;
   opacity: 1;
   background-color: var(--color-bg-lighter);
+  will-change: opacity;
 }
