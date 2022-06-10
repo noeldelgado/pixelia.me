@@ -38,6 +38,7 @@ html {
 
 body {
   font-family: 'Droid Sans Mono', monospace;
+  min-height: 100vh;
   background-color: var(--color-bg);
   color: var(--color-text);
 

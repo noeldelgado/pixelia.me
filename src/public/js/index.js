@@ -39,6 +39,10 @@ internals.handleScrollUpdate = (scrollPos) => {
     }
 };
 
+internals.loadHandler = () => {
+    internals.projectsHandler.loaded();
+};
+
 internals.projectsHandler.element.addEventListener('projectShow', () => {
     internals.body.classList.add('-prevent-scrolling');
     internals.pageTopWave.classList.add('-pause');
@@ -52,5 +56,6 @@ internals.projectsHandler.element.addEventListener('projectHide', () => {
 });
 
 window.addEventListener('scroll', internals.scrollHandler);
+window.addEventListener('load', internals.loadHandler);
 
 document.documentElement.style.setProperty('--scrollbar-width', `${getScrollbarWidth()}px`);
