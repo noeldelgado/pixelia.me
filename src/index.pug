@@ -68,12 +68,20 @@ html(lang="en")
         ul.section__grid.list--decimal
           each i in oss
             li
-              a(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
-                span.-le= i.name
-                  if i.external
-                    svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
-                      use('xlink:href'="#svg-launch-24px")
-                p.-desc= i.description
+              a.-dif(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                if i.image
+                  .icon
+                    picture
+                      source(srcset=`./public/images/${i.image}-32.webp 1x, ./public/images/${i.image}-64.webp 2x` type="image/webp")
+                      img(src=`./public/images/${i.image}-32.png` srcset=`./public/images/${i.image}-64.png 2x` width="32" height="32" alt="project icon" loading="lazy")
+                else if i.icon
+                  .icon.emoji= i.icon
+                div
+                  span.-le= i.name
+                    if i.external
+                      svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
+                        use('xlink:href'="#svg-launch-24px")
+                  p.-desc= i.description
 
       section.projects
         h2.-ttu Projects
