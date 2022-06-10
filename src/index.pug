@@ -129,12 +129,12 @@ html(lang="en")
           br
           span.description
 
+    script(src="./public/js/index.js" type="module" defer)
+
     if (process.env.NODE_ENV === 'production')
-      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" defer)
+      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-23768287-1');
-
-    script(src="./public/js/index.js" type="module" defer)
