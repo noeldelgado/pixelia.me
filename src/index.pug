@@ -16,21 +16,13 @@ html(lang="en")
     link(rel="manifest" href="site.webmanifest")
     link(rel="stylesheet", href="./public/css/style.css")
   body
+    include mixins/social-nav
     include svg-sprite-symbol/svg/sprite.symbol.svg
 
     header.wrapper
       h1 Noel Delgado
       h2.mb05 Web Developer &amp; pseudo-<span class="-td">████████</span>
-      ul.header__list
-        each i in social
-          li.header__list__item.-dif
-            if i.url
-              a.-dif(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
-                span.-le= i.text
-                  svg(width="14" height="14" aria-hidden="true")
-                    use('xlink:href'="#svg-launch-24px")
-            else
-              span= i.text
+      +social-nav
 
     main.wrapper
       section.demos
@@ -102,16 +94,7 @@ html(lang="en")
                   p.-desc= i.description
 
     footer.wrapper
-      ul.header__list
-        each i in social
-          li.header__list__item.-dif
-            if i.url
-              a.-dif(href=`${i.url}` rel="noopener noreferrer" target="_blank" aria-label="Will open in a new window")
-                span.-le= i.text
-                  svg(width="14" height="14" aria-hidden="true")
-                    use('xlink:href'="#svg-launch-24px")
-            else
-              span= i.text
+      +social-nav
       .-td v#{version}
 
     .iframe-wrapper

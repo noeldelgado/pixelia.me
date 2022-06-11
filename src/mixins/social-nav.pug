@@ -1,0 +1,16 @@
+mixin social-nav
+  ul.social-nav
+    each item in social
+      li.-dif
+        if item.url
+          a.-dif(
+            href=`${item.url}`
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label=`${item.text} - link opens in a new tab`
+          )
+            span.-le= item.text
+              svg.svg--external-icon(width="14" height="14" aria-hidden="true")
+                use('xlink:href'="#svg-launch-24px")
+        else
+          span= item.text
