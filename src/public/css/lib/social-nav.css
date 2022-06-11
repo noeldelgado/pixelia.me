@@ -1,0 +1,7 @@
+.social-nav {
+  font-size: 0.85714rem;
+
+  & > li {
+    padding: 0 1.5em 0 0;
+  }
+}

@@ -3,6 +3,10 @@ const { log } = console;
 import FollowingEye from './FollowingEye';
 import { $ } from './utils';
 
+const internals = {
+  eye: new FollowingEye().render($('[data-bind-eye="true"]')).update()
+};
+
 export default class HandleProjectsLoad {
     constructor(config) {
         log('🎬');
@@ -17,7 +21,6 @@ export default class HandleProjectsLoad {
         if (!that.config.links) return;
 
         that.events = {};
-        that.eyes = [];
         that._isActive = false;
         that._demoWrapper = $('.iframe-wrapper');
         that._iframe = that._demoWrapper.querySelector('iframe');
@@ -50,23 +53,19 @@ export default class HandleProjectsLoad {
         that.events.projectShow = new CustomEvent('projectShow');
         that.events.projectHide = new CustomEvent('projectHide');
 
-        that.config.links.forEach(link => {
-            let svgEye = link.querySelector('svg > g.eye');
-
-            if (!svgEye) return;
-
-            that.eyes.push(new FollowingEye({
-                el: link,
-                svg: svgEye.parentElement,
-                eye: svgEye
-            }));
-        });
-
         that._handleLinkClick = that._handleLinkClick.bind(that);
         that._handleCloseIframe = that._handleCloseIframe.bind(that);
         that._handleKeyUp = that._handleKeyUp.bind(that);
 
-        that.config.links.forEach(l => l.addEventListener('click', that._handleLinkClick));
+        that.config.links.forEach(l => {
+          l.addEventListener('click', that._handleLinkClick);
+
+          if (l.dataset.bindEye === 'true') {
+            l.addEventListener('mouseenter', (ev) => {
+              internals.eye.render(ev.currentTarget);
+            });
+          }
+        });
         that._demoCloseButton.addEventListener('click', that._handleCloseIframe);
         document.addEventListener('keyup', that._handleKeyUp);
 

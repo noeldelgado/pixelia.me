@@ -82,8 +82,7 @@
       "error",
       "beside"
     ],
-    "indent": "error",
-    "indent-legacy": "error",
+    "indent": ["error", 2],
     "init-declarations": "error",
     "jsx-quotes": "error",
     "key-spacing": "error",
