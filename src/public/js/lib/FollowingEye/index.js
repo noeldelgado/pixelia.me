@@ -1,9 +1,8 @@
-const { log } = console;
 import { createElementFromString, debounce } from '../utils';
 import './style.css';
 
 /**
- * Man logic taken from Blake Bowen’s pen
+ * Main logic taken from Blake Bowen’s pen
  * https://codepen.io/osublake/pen/jzNgqY
  */
 export default class FollowingEye {
@@ -22,15 +21,16 @@ export default class FollowingEye {
   eye = null
 
   constructor() {
-    log('👁 👁');
     this.element = createElementFromString(this.#template);
     this.point = this.element.createSVGPoint();
     this.eye = this.element.querySelector('.FollowingEye-group');
+
     this.#bindEvents();
   }
 
   render(element, position = 'beforeend') {
     element.insertAdjacentElement(position, this.element);
+
     return this;
   }
 
@@ -46,6 +46,7 @@ export default class FollowingEye {
   #update({ x, y }) {
     const theta = Math.atan2(y - this.centerY, x - this.centerX);
     const angle = (theta * 180 / Math.PI) + 360;
+
     this.eye.style.transform = `rotate(${angle}deg)`;
   }
 
