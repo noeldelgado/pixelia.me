@@ -145,31 +145,8 @@ canvas {
   color: var(--color-text-darker);
 }
 
-.svg--external-icon { margin-left: 0.25em }
-
-.svg-eye__wrapper {
-  position: absolute;
-  width: 20%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.svg--eye {
-  display: block;
-  margin: 0;
-  opacity: 0;
-  transform: scale(.8);
-  will-change: transform, opacity;
-
-  & .eye { transform-origin: center center; }
-
-  & .eye-outer {
-    fill: none;
-    stroke: currentColor;
-  }
-
-  & .eye-inner { fill: currentColor; }
+.svg--external-icon {
+  margin-left: 0.25em;
 }
 
 .section__grid {

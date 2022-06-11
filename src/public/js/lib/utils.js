@@ -40,3 +40,9 @@ export const debounce = (fn, time) => {
         timeout = setTimeout(functionCall, time);
     }
 }
+
+export const createElementFromString = (htmlString) => {
+  const el = document.createElement('div');
+  el.insertAdjacentHTML('beforeend', htmlString);
+  return el.firstElementChild;
+}

@@ -1,0 +1,17 @@
+.FollowingEye {
+  width: 24px;
+  height: 24px;
+}
+
+.FollowingEye-group {
+  transform-origin: center center;
+}
+
+.FollowingEye-outline {
+  fill: none;
+  stroke: currentColor;
+}
+
+.FollowingEye-inner {
+  fill: currentColor;
+}

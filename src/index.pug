@@ -31,7 +31,14 @@ html(lang="en")
         ul.section__grid
           each i in demos
             li.section__grid__item
-              a.section__grid__anchor(href=`${i.url}` rel="noopener noreferrer" target="_blank" data-title=`${i.name}` data-description=`${i.description}`)
+              a.section__grid__anchor(
+                href=`${i.url}`
+                rel="noopener noreferrer"
+                target="_blank"
+                data-bind-eye="true"
+                data-title=`${i.name}`
+                data-description=`${i.description}`
+              )
                 if i.image
                   .section__grid__image-wrapper
                     figure
@@ -48,11 +55,6 @@ html(lang="en")
 
                         img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt=`${i.name} - ${i.description}`)
                       figcaption= i.description
-                    .svg-eye__wrapper
-                      svg.svg--eye(viewBox="0 0 100 100" width="100%" height="100%")
-                        g(class="eye")
-                          circle(class="eye-outer" stroke-width="6" cx="50" cy="50" r="46")
-                          circle(class="eye-inner" cx="76" cy="50" r="20")
 
       section.oss
         h2.-ttu OSS / Libs / Tools
