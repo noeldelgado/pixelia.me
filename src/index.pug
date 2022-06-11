@@ -47,12 +47,10 @@ html(lang="en")
                         source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.webp 1x, ./public/images/${i.image}-616.webp 2x` type="image/webp")
                         source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.webp 1x, ./public/images/${i.image}-544.webp 2x` type="image/webp")
                         source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.webp 1x, ./public/images/${i.image}-454.webp 2x` type="image/webp")
-
                         source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.png 1x, ./public/images/${i.image}.png 2x` type="image/png")
                         source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.png 1x, ./public/images/${i.image}-616.png 2x` type="image/png")
                         source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.png 1x, ./public/images/${i.image}-544.png 2x` type="image/png")
                         source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.png 1x, ./public/images/${i.image}-454.png 2x` type="image/png")
-
                         img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt=`${i.name} - ${i.description}`)
                       figcaption= i.description
 
@@ -62,7 +60,14 @@ html(lang="en")
         ul.section__grid.list--decimal
           each i in oss
             li
-              a.-dif(href=`${i.url}` data-title=`${i.name}` data-description=`${i.description}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+              a.-dif(
+                href=`${i.url}`
+                data-title=`${i.name}`
+                data-description=`${i.description}`
+                rel=(i.external && "noopener noreferrer")
+                target=(i.external && "_blank")
+                aria-label=(i.external && `${i.name} - link opens in a new tab`)
+              )
                 if i.image
                   .icon
                     picture
@@ -88,7 +93,12 @@ html(lang="en")
                   p.-td= i.name
                   p.-desc= i.description
               else
-                a(href=`${i.url}` rel=(i.external && "noopener noreferrer") target=(i.external && "_blank") aria-label=(i.external && "Will open in a new window"))
+                a(
+                  href=`${i.url}`
+                  rel=(i.external && "noopener noreferrer")
+                  target=(i.external && "_blank")
+                  aria-label=(i.external && `${i.name} - link opens in a new tab`)
+                )
                   span.-le= i.name
                     if i.external
                       svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
@@ -100,7 +110,14 @@ html(lang="en")
       .-td v#{version}
 
     .iframe-wrapper
-      iframe(src="about:blank" title="Noel’s demos on Codepen" frameborder="0" width="100%" height="100%" style="overflow:hidden;height:100%;width:100%")
+      iframe(
+        src="about:blank"
+        title="Noel’s demos on Codepen"
+        frameborder="0"
+        width="100%"
+        height="100%"
+        style="overflow:hidden;height:100%;width:100%"
+      )
     button.iframe-close-button(type="button" aria-label="Close project detail")
       svg(width="40" height="40" aria-hidden="true")
         use('xlink:href'="#svg-close-24px")
