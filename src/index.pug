@@ -19,12 +19,12 @@ html(lang="en")
     include mixins/social-nav
     include svg-sprite-symbol/svg/sprite.symbol.svg
 
-    header.wrapper
+    header.wrapper.pr
       h1 Noel Delgado
       h2.mb05 Web Developer &amp; pseudo-<span class="-td">████████</span>
       +social-nav
 
-    main.wrapper
+    main.wrapper.pr
       section.demos
         h2.-ttu Demos / Animations / Interactions
         p.mb1.-desc Stuff I do for fun
@@ -78,7 +78,7 @@ html(lang="en")
 
       section.oss
         h2.-ttu OSS / Libs / Tools
-        p.mb1.-desc Some open-source contributions
+        p.mb1.-desc Contributions to open-source
         ul.section__grid.list--decimal
           each i in oss
             li
@@ -106,7 +106,7 @@ html(lang="en")
 
       section.projects
         h2.-ttu Projects
-        p.mb1.-desc Some projects I have contributed to
+        p.mb1.-desc Some projects I have worked on
         ul.section__grid.list--decimal
           each i in projects
             li
@@ -127,7 +127,7 @@ html(lang="en")
                         use('xlink:href'="#svg-launch-24px")
                   p.-desc= i.description
 
-    footer.wrapper
+    footer.wrapper.pr
       +social-nav
       .-td v#{version}
 

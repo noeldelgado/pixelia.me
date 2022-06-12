@@ -15,15 +15,18 @@ export default class FollowingEye {
     </svg>
   `;
 
-  centerX = null;
-  centerY = null;
-  point = null
-  eye = null
+  #centerX = null;
+
+  #centerY = null;
+
+  #point = null
+
+  #eye = null
 
   constructor() {
     this.element = createElementFromString(this.#template);
-    this.point = this.element.createSVGPoint();
-    this.eye = this.element.querySelector('.FollowingEye-group');
+    this.#point = this.element.createSVGPoint();
+    this.#eye = this.element.querySelector('.FollowingEye-group');
 
     this.#bindEvents();
   }
@@ -35,19 +38,12 @@ export default class FollowingEye {
   }
 
   update() {
-    const { width, x, y } = this.eye.getBBox();
+    const { width, x, y } = this.#eye.getBBox();
 
-    this.centerX = x + (width / 2);
-    this.centerY = y + (width / 2);
+    this.#centerX = x + (width / 2);
+    this.#centerY = y + (width / 2);
 
     return this;
-  }
-
-  #update({ x, y }) {
-    const theta = Math.atan2(y - this.centerY, x - this.centerX);
-    const angle = (theta * 180 / Math.PI) + 360;
-
-    this.eye.style.transform = `rotate(${angle}deg)`;
   }
 
   mouseMoveHandler(ev) {
@@ -58,11 +54,18 @@ export default class FollowingEye {
     this.update();
   }
 
-  #getCoordinates(ev) {
-    this.point.x = ev.clientX;
-    this.point.y = ev.clientY;
+  #update({ x, y }) {
+    const theta = Math.atan2(y - this.#centerY, x - this.#centerX);
+    const angle = (theta * 180 / Math.PI) + 360;
 
-    return this.point.matrixTransform(this.element.getScreenCTM().inverse());
+    this.#eye.style.transform = `rotate(${angle}deg)`;
+  }
+
+  #getCoordinates(ev) {
+    this.#point.x = ev.clientX;
+    this.#point.y = ev.clientY;
+
+    return this.#point.matrixTransform(this.element.getScreenCTM().inverse());
   }
 
   #bindEvents() {
