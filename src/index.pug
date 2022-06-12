@@ -43,7 +43,7 @@ html(lang="en")
                   .section__grid__image-wrapper
                     figure
                       picture
-                        each type in ["webp", "png"]
+                        each type in ["avif", "webp", "png"]
                           source(
                             type=`image/${type}`
                             sizes=`
@@ -55,18 +55,18 @@ html(lang="en")
                               (min-width: 400px) 50vw,
                               100vw
                             `
-                            srcset=`
-                              ./public/images/${i.image}-200.${type} 200w,
-                              ./public/images/${i.image}-250.${type} 250w,
-                              ./public/images/${i.image}-300.${type} 300w,
-                              ./public/images/${i.image}-400.${type} 400w,
-                              ./public/images/${i.image}-500.${type} 500w,
-                              ./public/images/${i.image}-600.${type} 600w,
-                              ./public/images/${i.image}.${type} 800w
+                            srcset!=`
+                              ./public/images/${i.image}.png?as=${type}&width=200 200w,
+                              ./public/images/${i.image}.png?as=${type}&width=250 250w,
+                              ./public/images/${i.image}.png?as=${type}&width=300 300w,
+                              ./public/images/${i.image}.png?as=${type}&width=400 400w,
+                              ./public/images/${i.image}.png?as=${type}&width=500 500w,
+                              ./public/images/${i.image}.png?as=${type}&width=600 600w,
+                              ./public/images/${i.image}.png?as=${type}&width=800 800w
                             `
                           )
                         img.section__grid__image(
-                          src=`./public/images/${i.image}-400.png`
+                          src=`./public/images/${i.image}.png?as=${'png'}&width=400`
                           width="400"
                           height="225"
                           alt=`${i.name} - ${i.description}`

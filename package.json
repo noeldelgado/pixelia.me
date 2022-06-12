@@ -20,7 +20,8 @@
     "@parcel/transformer-webmanifest": "2.6.0",
     "eslint": "8.17.0",
     "parcel": "2.6.0",
-    "postcss": "8.4.14"
+    "postcss": "8.4.14",
+    "sharp": "0.29.3"
   },
   "@parcel/transformer-css": {
     "drafts": {
