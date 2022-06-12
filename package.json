@@ -18,6 +18,7 @@
     "@parcel/transformer-inline-string": "2.6.0",
     "@parcel/transformer-pug": "2.6.0",
     "@parcel/transformer-webmanifest": "2.6.0",
+    "eslint": "8.17.0",
     "parcel": "2.6.0",
     "postcss": "8.4.14"
   },
