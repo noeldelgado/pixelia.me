@@ -43,15 +43,37 @@ html(lang="en")
                   .section__grid__image-wrapper
                     figure
                       picture
-                        source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.webp 1x, ./public/images/${i.image}.webp 2x` type="image/webp")
-                        source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.webp 1x, ./public/images/${i.image}-616.webp 2x` type="image/webp")
-                        source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.webp 1x, ./public/images/${i.image}-544.webp 2x` type="image/webp")
-                        source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.webp 1x, ./public/images/${i.image}-454.webp 2x` type="image/webp")
-                        source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.png 1x, ./public/images/${i.image}.png 2x` type="image/png")
-                        source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.png 1x, ./public/images/${i.image}-616.png 2x` type="image/png")
-                        source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.png 1x, ./public/images/${i.image}-544.png 2x` type="image/png")
-                        source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.png 1x, ./public/images/${i.image}-454.png 2x` type="image/png")
-                        img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt=`${i.name} - ${i.description}`)
+                        each type in ["webp", "png"]
+                          source(
+                            type=`image/${type}`
+                            sizes=`
+                              (min-width: 1228px) 200px,
+                              (min-width: 1200px) 16.66vw,
+                              (min-width: 1000px) 20vw,
+                              (min-width: 800px) 25vw,
+                              (min-width: 600px) 33.33vw,
+                              (min-width: 400px) 50vw,
+                              100vw
+                            `
+                            srcset=`
+                              ./public/images/${i.image}-200.${type} 200w,
+                              ./public/images/${i.image}-250.${type} 250w,
+                              ./public/images/${i.image}-300.${type} 300w,
+                              ./public/images/${i.image}-400.${type} 400w,
+                              ./public/images/${i.image}-500.${type} 500w,
+                              ./public/images/${i.image}-600.${type} 600w,
+                              ./public/images/${i.image}.${type} 800w
+                            `
+                          )
+                        img.section__grid__image(
+                          src=`./public/images/${i.image}-400.png`
+                          width="400"
+                          height="225"
+                          alt=`${i.name} - ${i.description}`
+                          loading="lazy"
+                          decoding="async"
+                        )
+
                       figcaption= i.description
 
       section.oss
