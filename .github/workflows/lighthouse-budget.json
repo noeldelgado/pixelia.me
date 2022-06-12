@@ -10,7 +10,7 @@
       { "resourceType": "font", "budget": 1 },
       { "resourceType": "image", "budget": 30 },
       { "resourceType": "media", "budget": 0 },
-      { "resourceType": "other", "budget": 2 },
+      { "resourceType": "other", "budget": 1 },
       { "resourceType": "script", "budget": 6 },
       { "resourceType": "stylesheet", "budget": 3 },
       { "resourceType": "third-party", "budget": 3 }
