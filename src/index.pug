@@ -19,12 +19,12 @@ html(lang="en")
     include mixins/social-nav
     include svg-sprite-symbol/svg/sprite.symbol.svg
 
-    header.wrapper
+    header.wrapper.pr
       h1 Noel Delgado
       h2.mb05 Web Developer &amp; pseudo-<span class="-td">████████</span>
       +social-nav
 
-    main.wrapper
+    main.wrapper.pr
       section.demos
         h2.-ttu Demos / Animations / Interactions
         p.mb1.-desc Stuff I do for fun
@@ -43,20 +43,42 @@ html(lang="en")
                   .section__grid__image-wrapper
                     figure
                       picture
-                        source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.webp 1x, ./public/images/${i.image}.webp 2x` type="image/webp")
-                        source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.webp 1x, ./public/images/${i.image}-616.webp 2x` type="image/webp")
-                        source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.webp 1x, ./public/images/${i.image}-544.webp 2x` type="image/webp")
-                        source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.webp 1x, ./public/images/${i.image}-454.webp 2x` type="image/webp")
-                        source(media="(max-width: 459px)" srcset=`./public/images/${i.image}-400.png 1x, ./public/images/${i.image}.png 2x` type="image/png")
-                        source(media="(max-width: 676px)" srcset=`./public/images/${i.image}-308.png 1x, ./public/images/${i.image}-616.png 2x` type="image/png")
-                        source(media="(max-width: 893px)" srcset=`./public/images/${i.image}-272.png 1x, ./public/images/${i.image}-544.png 2x` type="image/png")
-                        source(media="(min-width: 894px)" srcset=`./public/images/${i.image}-227.png 1x, ./public/images/${i.image}-454.png 2x` type="image/png")
-                        img.section__grid__image(src=`./public/images/${i.image}-400.png` loading="lazy" width="400" height="225" alt=`${i.name} - ${i.description}`)
+                        each type in ["avif", "webp", "png"]
+                          source(
+                            type=`image/${type}`
+                            sizes=`
+                              (min-width: 1228px) 200px,
+                              (min-width: 1200px) 16.66vw,
+                              (min-width: 1000px) 20vw,
+                              (min-width: 800px) 25vw,
+                              (min-width: 600px) 33.33vw,
+                              (min-width: 400px) 50vw,
+                              100vw
+                            `
+                            srcset!=`
+                              ./public/images/${i.image}.png?as=${type}&width=200 200w,
+                              ./public/images/${i.image}.png?as=${type}&width=250 250w,
+                              ./public/images/${i.image}.png?as=${type}&width=300 300w,
+                              ./public/images/${i.image}.png?as=${type}&width=400 400w,
+                              ./public/images/${i.image}.png?as=${type}&width=500 500w,
+                              ./public/images/${i.image}.png?as=${type}&width=600 600w,
+                              ./public/images/${i.image}.png?as=${type}&width=800 800w
+                            `
+                          )
+                        img.section__grid__image(
+                          src=`./public/images/${i.image}.png?as=${'png'}&width=400`
+                          width="400"
+                          height="225"
+                          alt=`${i.name} - ${i.description}`
+                          loading="lazy"
+                          decoding="async"
+                        )
+
                       figcaption= i.description
 
       section.oss
         h2.-ttu OSS / Libs / Tools
-        p.mb1.-desc Some open-source contributions
+        p.mb1.-desc Contributions to open-source
         ul.section__grid.list--decimal
           each i in oss
             li
@@ -71,8 +93,29 @@ html(lang="en")
                 if i.image
                   .icon
                     picture
-                      source(srcset=`./public/images/${i.image}-32.webp 1x, ./public/images/${i.image}-64.webp 2x` type="image/webp")
-                      img(src=`./public/images/${i.image}-32.png` srcset=`./public/images/${i.image}-64.png 2x` width="32" height="32" alt="project icon" loading="lazy")
+                      source(
+                        type="image/avif"
+                        srcset!=`
+                          ./public/images/${i.image}.png?as=avif&width=32 1x,
+                          ./public/images/${i.image}.png?as=avif&width=64 2x
+                        `
+                      )
+                      source(
+                        type="image/webp"
+                        srcset!=`
+                          ./public/images/${i.image}.png?as=webp&width=32 1x,
+                          ./public/images/${i.image}.png?as=webp&width=64 2x
+                        `
+                      )
+                      img(
+                        src=`./public/images/${i.image}.png?as=png&width=32`
+                        srcset=`./public/images/${i.image}.png?as=png&width=64 2x`
+                        width="32"
+                        height="32"
+                        alt="project icon"
+                        loading="lazy"
+                        decoding="async"
+                      )
                 else if i.icon
                   .icon.emoji= i.icon
                 div
@@ -84,7 +127,7 @@ html(lang="en")
 
       section.projects
         h2.-ttu Projects
-        p.mb1.-desc Some projects I have contributed to
+        p.mb1.-desc Some projects I have worked on
         ul.section__grid.list--decimal
           each i in projects
             li
@@ -105,7 +148,7 @@ html(lang="en")
                         use('xlink:href'="#svg-launch-24px")
                   p.-desc= i.description
 
-    footer.wrapper
+    footer.wrapper.pr
       +social-nav
       .-td v#{version}
 

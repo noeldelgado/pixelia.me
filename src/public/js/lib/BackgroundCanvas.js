@@ -1,106 +1,97 @@
-const { log } = console;
-const { PI  } = Math;
-
+import { debounce } from './utils';
 import Point from './Point';
 
-const internals = {
-    maxWidth: 0,
-    maxHeight: 0,
-    pointsArray: []
-};
-
 export default class BackgroundCanvas {
-    constructor(config) {
-        log('🖼');
+  #points = [];
 
-        const that = this;
+  #maxWidth = 0;
 
-        Object.assign(that.config = {}, {
-            totalPoints: 100,
-            bgColor: '#000'
-        }, config);
+  #maxHeight = 0;
 
-        that.raf = null;
-        that.canvas = document.createElement('canvas');
-        that.ctx = that.canvas.getContext('2d');
-        if (!that.ctx) return;
+  #raf = null;
 
-        document.body.insertBefore(that.canvas, document.body.firstElementChild);
-        that._updateDynamics();
+  #ctx = null;
 
-        for (let i = 0; i < that.config.totalPoints; i+=1) {
-            internals.pointsArray.push(new Point(i));
-        }
+  constructor(config) {
+    this.config = {
+      totalPoints: 100,
+      bgColor: '#000',
+      ...config,
+    };
+
+    this.element = document.createElement('canvas');
+    this.#ctx = this.element.getContext('2d', { alpha: false });
+  }
+
+  render(element, position = 'beforeend') {
+    element.insertAdjacentElement(position, this.element);
+
+    return this;
+  }
+
+  run() {
+    this.#bindEvents()._updateDynamics().loop();
+
+    for (let i = 0; i < this.config.totalPoints; i+=1)
+      this.#points.push(new Point());
+
+    return this;
+  }
+
+  pause() {
+    window.cancelAnimationFrame(this.#raf);
+    return this;
+  }
+
+  resume() {
+    this.loop();
+    return this;
+  }
+
+  _updateDynamics() {
+    this.#maxWidth = window.innerWidth;
+    this.#maxHeight = window.innerHeight;
+    this.element.width = this.#maxWidth;
+    this.element.height = this.#maxHeight;
+
+    return this;
+  }
+
+  loop() {
+    this.#raf = window.requestAnimationFrame(this.loop);
+    this.draw();
+  }
+
+  draw() {
+    this.#ctx.beginPath();
+    this.#ctx.rect(0, 0, this.#maxWidth, this.#maxHeight);
+    this.#ctx.fillStyle = this.config.bgColor;
+    this.#ctx.fill();
+    this.#ctx.closePath();
+
+    for (let i = 0, len = this.#points.length; i < len; i += 1) {
+      let point = this.#points[i];
+
+      this.#ctx.beginPath();
+      this.#ctx.arc(point.x, point.y, point.r, Math.PI * 2, false);
+      this.#ctx.fillStyle = point.color;
+      this.#ctx.globalAlpha = point.alpha;
+      this.#ctx.fill();
+      this.#ctx.globalAlpha = 1.0;
+      this.#ctx.closePath();
+
+      point.update(this.#maxWidth, this.#maxHeight);
+
+      point = null;
     }
+  }
 
-    run() {
-        const that = this;
+  #bindEvents() {
+    this.loop = this.loop.bind(this);
+    this._updateDynamics = this._updateDynamics.bind(this);
 
-        that._bindEvents();
-        that._loop();
+    window.addEventListener('resize', debounce(this._updateDynamics, 500));
 
-        return that;
-    }
-
-    pause() {
-        window.cancelAnimationFrame(this.raf);
-        return this;
-    }
-
-    restart() {
-        this._loop();
-        return this;
-    }
-
-    _bindEvents() {
-        const that = this;
-
-        that._loop = that._loop.bind(that);
-
-        that._updateDynamics = that._updateDynamics.bind(that);
-        window.addEventListener('resize', that._updateDynamics);
-
-        return that;
-    }
-
-    _updateDynamics() {
-        const that = this;
-
-        internals.maxWidth = window.innerWidth;
-        internals.maxHeight = window.innerHeight;
-        that.canvas.width = internals.maxWidth;
-        that.canvas.height = internals.maxHeight;
-    }
-
-    _loop() {
-        this.raf = window.requestAnimationFrame(this._loop);
-        this._draw();
-    }
-
-    _draw() {
-        const that = this;
-
-        that.ctx.beginPath();
-        that.ctx.globalAlpha = 1;
-        that.ctx.rect(0, 0, internals.maxWidth, internals.maxHeight);
-        that.ctx.fillStyle = that.config.bgColor;
-        that.ctx.fill();
-        that.ctx.closePath();
-
-        for (let i = 0; i < internals.pointsArray.length; i += 1) {
-            let point = internals.pointsArray[i];
-
-            that.ctx.beginPath();
-            that.ctx.globalAlpha = point.alpha;
-            that.ctx.fillStyle = point.color;
-            that.ctx.arc(point.x, point.y, point.r, PI * 2, false);
-            that.ctx.fill();
-            that.ctx.closePath();
-
-            point.checkUpdate({
-                maxWidth: internals.maxWidth,
-                maxHeight: internals.maxHeight
-            });
-        }
-    }
+    return this;
+  }
 }
