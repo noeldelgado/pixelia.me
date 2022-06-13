@@ -93,8 +93,29 @@ html(lang="en")
                 if i.image
                   .icon
                     picture
-                      source(srcset=`./public/images/${i.image}-32.webp 1x, ./public/images/${i.image}-64.webp 2x` type="image/webp")
-                      img(src=`./public/images/${i.image}-32.png` srcset=`./public/images/${i.image}-64.png 2x` width="32" height="32" alt="project icon" loading="lazy")
+                      source(
+                        type="image/avif"
+                        srcset!=`
+                          ./public/images/${i.image}.png?as=avif&width=32 1x,
+                          ./public/images/${i.image}.png?as=avif&width=64 2x
+                        `
+                      )
+                      source(
+                        type="image/webp"
+                        srcset!=`
+                          ./public/images/${i.image}.png?as=webp&width=32 1x,
+                          ./public/images/${i.image}.png?as=webp&width=64 2x
+                        `
+                      )
+                      img(
+                        src=`./public/images/${i.image}.png?as=png&width=32`
+                        srcset=`./public/images/${i.image}.png?as=png&width=64 2x`
+                        width="32"
+                        height="32"
+                        alt="project icon"
+                        loading="lazy"
+                        decoding="async"
+                      )
                 else if i.icon
                   .icon.emoji= i.icon
                 div
