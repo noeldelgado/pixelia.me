@@ -17,12 +17,12 @@
     ],
     "resourceSizes": [
       { "resourceType": "document", "budget": 12 },
-      { "resourceType": "font", "budget": 10 },
-      { "resourceType": "image", "budget": 135 },
-      { "resourceType": "other", "budget": 22 },
+      { "resourceType": "font", "budget": 8 },
+      { "resourceType": "image", "budget": 100 },
+      { "resourceType": "other", "budget": 1 },
       { "resourceType": "script", "budget": 70 },
       { "resourceType": "stylesheet", "budget": 4 },
-      { "resourceType": "total", "budget": 300 }
+      { "resourceType": "total", "budget": 200 }
     ]
   }
 ]
