@@ -1,5 +1,5 @@
 {
-  "version": "0.2.13",
+  "version": "0.2.14",
   "scripts": {
     "start": "parcel src/index.pug",
     "prebuild": "rm -rf docs",
@@ -7,17 +7,20 @@
     "postbuild": "cp CNAME docs/",
     "test:lh": "lhci autorun --collect.numberOfRuns=1 --config=./.github/workflows/lighthouserc.json",
     "test:lhb": "lhci autorun --collect.numberOfRuns=1 --collect.staticDistDir=./docs --assert.budgetsFile=.github/workflows/lighthouse-budget.json",
-    "svg": "svg-sprite --symbol --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --symbol-inline --symbol-example --shape-id-generator=svg-%s --dest=src src/svgs/*.svg",
-    "convert-demo-images": "./scripts/images.sh ./src/data/images/demos ./src/public/images/demos"
+    "svg": "svg-sprite --symbol --symbol-dest=svg-sprite-symbol --symbol-prefix=.svg- --ss=sprite.svg --symbol-inline --symbol-example --shape-id-generator=svg-%s --dest=src src/svgs/*.svg"
   },
   "author": "Noel Delgado <pixelia.me@gmail.com> (http://pixelia.me/)",
   "license": "MIT",
   "devDependencies": {
+    "@parcel/optimizer-data-url": "2.6.0",
     "@parcel/packager-raw-url": "2.6.0",
+    "@parcel/transformer-inline-string": "2.6.0",
     "@parcel/transformer-pug": "2.6.0",
     "@parcel/transformer-webmanifest": "2.6.0",
+    "eslint": "8.17.0",
     "parcel": "2.6.0",
-    "postcss": "8.4.14"
+    "postcss": "8.4.14",
+    "sharp": "0.29.3"
   },
   "@parcel/transformer-css": {
     "drafts": {

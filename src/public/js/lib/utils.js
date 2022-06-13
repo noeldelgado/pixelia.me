@@ -1,10 +1,8 @@
-const { floor, random } = Math;
-
 export const $ = document.querySelector.bind(document);
 
 export const $$ = document.querySelectorAll.bind(document);
 
-export const randomInt = (min, max) => floor(random() * (max - min + 1)) + min;
+export const randomFloatInclusive = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 /* Copyright (c) 2011 David Walsh
  * http://davidwalsh.name/detect-scrollbar-width

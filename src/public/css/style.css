@@ -117,8 +117,6 @@ h2 {
 ul { list-style: none; }
 
 section {
-  position: relative;
-  margin: 0 auto;
   padding: 0 0 6rem;
 }
 
@@ -128,8 +126,9 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
 }
 
  /* --------------------- */
@@ -169,6 +168,7 @@ canvas {
     }
   }
 }
+.pr { position: relative }
 .mb05 { margin-bottom: 0.5rem }
 .mb1 { margin-bottom: 1rem }
 .-td { color: var(--color-text-darker) }

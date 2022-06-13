@@ -10,19 +10,19 @@
       { "resourceType": "font", "budget": 1 },
       { "resourceType": "image", "budget": 30 },
       { "resourceType": "media", "budget": 0 },
-      { "resourceType": "other", "budget": 2 },
-      { "resourceType": "script", "budget": 5 },
+      { "resourceType": "other", "budget": 1 },
+      { "resourceType": "script", "budget": 6 },
       { "resourceType": "stylesheet", "budget": 3 },
       { "resourceType": "third-party", "budget": 3 }
     ],
     "resourceSizes": [
-      { "resourceType": "document", "budget": 11 },
-      { "resourceType": "font", "budget": 10 },
-      { "resourceType": "image", "budget": 135 },
-      { "resourceType": "other", "budget": 22 },
+      { "resourceType": "document", "budget": 12 },
+      { "resourceType": "font", "budget": 8 },
+      { "resourceType": "image", "budget": 100 },
+      { "resourceType": "other", "budget": 1 },
       { "resourceType": "script", "budget": 70 },
       { "resourceType": "stylesheet", "budget": 4 },
-      { "resourceType": "total", "budget": 300 }
+      { "resourceType": "total", "budget": 200 }
     ]
   }
 ]

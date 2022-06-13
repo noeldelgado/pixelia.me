@@ -1,68 +1,55 @@
 const { floor, random } = Math;
 
-import { randomInt } from './utils';
+import { randomFloatInclusive } from './utils';
 
 const internals = {
-    COLORS: [
-        'rgba(238, 170, 238, .3)',
-        'rgba(238, 170, 238, .8)',
-        'rgba(153, 255, 235, .3)',
-        'rgba(153, 255, 235, .8)',
-        'rgba(161, 170, 243, .3)',
-        'rgba(161, 170, 243, .8)'
-    ],
-    MAX_POINT_SPEED: 0.05,
-    MIN_POINT_SPEED: -0.05,
-    MIN_POINT_RADIO: 0.6,
-    MAX_POINT_RADIO: 1
+  COLORS: [
+    'rgba(31, 255, 255, .5)',
+    'rgba(161, 170, 243, .5)',
+    'rgba(255, 255, 255, .5)',
+  ],
+  MAX_POINT_SPEED: 0.05,
+  MIN_POINT_SPEED: -0.05,
+  MIN_POINT_RADIO: 0.6,
+  MAX_POINT_RADIO: 1,
 };
 
 export default class Point {
-    constructor(index) {
-        this.index = index;
-        this.alpha = random();
-        this.alphaFactor = this.alpha * 0.1 * 0.1;
-        this.update({
-            maxWidth: window.innerWidth,
-            maxHeight: window.innerHeight
-        });
+  constructor() {
+    this.alpha = 0;
+    this.alphaFactor = random() * 0.01;
+    this.reset();
+  }
+
+  update(maxWidth = 100, maxHeight = 100) {
+    this.x += this.sx;
+    this.y += this.sy;
+    this.alpha += this.alphaFactor;
+
+    if (this.alpha > 1.0) {
+      this.alpha = 1.0;
+      this.alphaFactor *= -1;
+    }
+    else if (this.alpha < 0.0) {
+      this.alpha = 0.0;
+      this.alphaFactor *= -1;
     }
 
-    checkUpdate({ maxWidth, maxHeight }) {
-        const point = this;
+    if (this.x > maxWidth || this.x < 0) this.sx *= -1;
+    if (this.y > maxHeight || this.y < 0) this.sy *= -1;
 
-        point.x += point.sx;
-        point.y += point.sy;
-        point.alpha += point.alphaFactor;
+    if (this.alpha === 0) this.reset(maxWidth, maxHeight);
 
-        if (point.x > maxWidth || point.x < 0) {
-            point.sx *= -1;
-        }
+    return this;
+  }
 
-        if (point.y > maxHeight || point.y < 0) {
-            point.sy *= -1;
-        }
-
-        if (point.alpha > 1 || point.alpha < 0) {
-            point.alphaFactor *= -1;
-        }
-
-        if (point.alpha < 0) {
-            point.update({
-                maxWidth,
-                maxHeight
-            });
-        }
-    }
-
-    update({ maxWidth, maxHeight }) {
-        const point = this;
-
-        point.x = random() * maxWidth;
-        point.y = random() * maxHeight;
-        point.color = internals.COLORS[floor(random() * internals.COLORS.length)];
-        point.r = randomInt(internals.MIN_POINT_RADIO, internals.MAX_POINT_RADIO);
-        point.sx = random() < 0.5 ? internals.MIN_POINT_SPEED : internals.MAX_POINT_SPEED;
-        point.sy = random() < 0.5 ? internals.MIN_POINT_SPEED : internals.MAX_POINT_SPEED;
-    }
+  reset(maxWidth = window.innerWidth, maxHeight = window.innerHeight) {
+    this.x = random() * maxWidth;
+    this.y = random() * maxHeight;
+    this.r = randomFloatInclusive(internals.MIN_POINT_RADIO, internals.MAX_POINT_RADIO);
+    this.sx = random() < 0.5 ? internals.MIN_POINT_SPEED : internals.MAX_POINT_SPEED;
+    this.sy = random() < 0.5 ? internals.MIN_POINT_SPEED : internals.MAX_POINT_SPEED;
+    this.color = internals.COLORS[floor(random() * internals.COLORS.length)];
+    return this;
+  }
 }
