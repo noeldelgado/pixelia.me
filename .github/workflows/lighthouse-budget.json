@@ -16,7 +16,7 @@
       { "resourceType": "third-party", "budget": 3 }
     ],
     "resourceSizes": [
-      { "resourceType": "document", "budget": 11 },
+      { "resourceType": "document", "budget": 12 },
       { "resourceType": "font", "budget": 10 },
       { "resourceType": "image", "budget": 135 },
       { "resourceType": "other", "budget": 22 },
