@@ -6,6 +6,14 @@
 @import './lib/projects-detail';
 @import './lib/footer';
 
+@font-face {
+  font-family: 'Droid Sans Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/droidsansmono.woff2) format('woff2');
+}
+
 :root {
   --color-bg: #1a1a1a;
   --color-bg-lighter: color-mix(in srgb, #1a1a1a, white 10%);
