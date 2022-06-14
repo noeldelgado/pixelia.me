@@ -165,7 +165,7 @@ html(lang="en")
     script(src="./public/js/index.js" type="module" defer)
 
     if (process.env.NODE_ENV === 'production')
-      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" async)
+      script(src="https://www.googletagmanager.com/gtag/js?id=UA-23768287-1" defer)
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
