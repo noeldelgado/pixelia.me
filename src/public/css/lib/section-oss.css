@@ -1,4 +1,8 @@
 .oss {
+  & a {
+    min-height: auto;
+  }
+
   & .icon {
     width: 32px;
     height: 32px;
