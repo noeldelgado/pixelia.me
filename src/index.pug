@@ -126,27 +126,45 @@ html(lang="en")
                   p.-desc= i.description
 
       section.projects
-        h2.-ttu Projects
-        p.mb1.-desc Some projects I have worked on
+        h2.ttu Projects
+        p.mb1.desc Some projects I have worked on
         ul.section__grid.list--decimal
           each i in projects
             li
-              if i.offline
-                div
-                  p.-td= i.name
-                  p.-desc= i.description
-              else
-                a(
-                  href=`${i.url}`
-                  rel=(i.external && "noopener noreferrer")
-                  target=(i.external && "_blank")
-                  aria-label=(i.external && `${i.name} - link opens in a new tab`)
-                )
-                  span.-le= i.name
-                    if i.external
-                      svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
-                        use('xlink:href'="#svg-launch-24px")
-                  p.-desc= i.description
+              div
+                div.dif
+                  if i.image
+                    picture.icon
+                      each type in ["avif", "webp", "png"]
+                        source(
+                          type=`image/${type}`
+                          srcset!=`
+                            ./public/images/projects/${i.image}?as=${type}&width=16 1x,
+                            ./public/images/projects/${i.image}?as=${type}&width=32 2x
+                          `
+                        )
+                      img(
+                        src!=`./public/images/projects/${i.image}?as=png&width=16`
+                        width="16"
+                        height="16"
+                        alt=`${i.name} logo icon`
+                        loading="lazy"
+                        decoding="async"
+                      )
+                  if i.offline
+                    p.td= i.name
+                  else
+                    a(
+                      href=`${i.url}`
+                      rel=(i.external && "noopener noreferrer")
+                      target=(i.external && "_blank")
+                      aria-label=(i.external && `${i.name} - link opens in a new tab`)
+                    )
+                      span.-le= i.name
+                        if i.external
+                          svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
+                            use('xlink:href'="#svg-launch-24px")
+                p.desc= i.description
 
     footer.wrapper.pr
       +social-nav
