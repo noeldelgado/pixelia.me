@@ -38,42 +38,40 @@ html(lang="en")
                 data-bind-eye="true"
                 data-title=`${i.name}`
                 data-description=`${i.description}`
+                title= i.description
               )
                 if i.image
-                  figure
-                    picture
-                      each type in ["avif", "webp", "png"]
-                        source(
-                          type=`image/${type}`
-                          sizes=`
-                            (min-width: 1228px) 200px,
-                            (min-width: 1200px) 16.66vw,
-                            (min-width: 1000px) 20vw,
-                            (min-width: 800px) 25vw,
-                            (min-width: 600px) 33.33vw,
-                            (min-width: 400px) 50vw,
-                            100vw
-                          `
-                          srcset!=`
-                            ./public/images/${i.image}.png?as=${type}&width=200 200w,
-                            ./public/images/${i.image}.png?as=${type}&width=250 250w,
-                            ./public/images/${i.image}.png?as=${type}&width=300 300w,
-                            ./public/images/${i.image}.png?as=${type}&width=400 400w,
-                            ./public/images/${i.image}.png?as=${type}&width=500 500w,
-                            ./public/images/${i.image}.png?as=${type}&width=600 600w,
-                            ./public/images/${i.image}.png?as=${type}&width=800 800w
-                          `
-                        )
-                      img.section__grid__image(
-                        src=`./public/images/${i.image}.png?as=${'png'}&width=400`
-                        width="400"
-                        height="225"
-                        alt=`${i.name} - ${i.description}`
-                        loading=`${index === 0 ? 'eager' : 'lazy'}`
-                        decoding="async"
+                  picture
+                    each type in ["avif", "webp", "png"]
+                      source(
+                        type=`image/${type}`
+                        sizes=`
+                          (min-width: 1228px) 200px,
+                          (min-width: 1200px) 16.66vw,
+                          (min-width: 1000px) 20vw,
+                          (min-width: 800px) 25vw,
+                          (min-width: 600px) 33.33vw,
+                          (min-width: 400px) 50vw,
+                          100vw
+                        `
+                        srcset!=`
+                          ./public/images/${i.image}.png?as=${type}&width=200 200w,
+                          ./public/images/${i.image}.png?as=${type}&width=250 250w,
+                          ./public/images/${i.image}.png?as=${type}&width=300 300w,
+                          ./public/images/${i.image}.png?as=${type}&width=400 400w,
+                          ./public/images/${i.image}.png?as=${type}&width=500 500w,
+                          ./public/images/${i.image}.png?as=${type}&width=600 600w,
+                          ./public/images/${i.image}.png?as=${type}&width=800 800w
+                        `
                       )
-
-                    figcaption= i.description
+                    img.section__grid__image(
+                      src=`./public/images/${i.image}.png?as=${'png'}&width=400`
+                      width="400"
+                      height="225"
+                      alt=`${i.name} - ${i.description}`
+                      loading=`${index === 0 ? 'eager' : 'lazy'}`
+                      decoding="async"
+                    )
 
       section.oss
         h2.ttu OSS / Libs / Tools
