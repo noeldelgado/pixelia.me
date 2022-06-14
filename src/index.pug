@@ -162,35 +162,6 @@ html(lang="en")
       +social-nav
       .td v#{version}
 
-    .iframe-wrapper
-      iframe(
-        src="about:blank"
-        title="Noel’s demos on Codepen"
-        frameborder="0"
-        width="100%"
-        height="100%"
-        style="overflow:hidden;height:100%;width:100%"
-      )
-    button.iframe-close-button(type="button" aria-label="Close project detail")
-      svg(width="40" height="40" aria-hidden="true")
-        use('xlink:href'="#svg-close-24px")
-    .iframe-loader
-      .iframe-loader__layer.--waves
-        svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
-          use('xlink:href'="#svg-loader-wave-top")
-        svg.loader-wave-bottom("xmlns:xlink"="http://www.w3.org/1999/xlink")
-          use('xlink:href'="#svg-loader-wave-bottom")
-      .iframe-loader__layer.--info
-        svg.loader-wave-top("xmlns:xlink"="http://www.w3.org/1999/xlink")
-          use('xlink:href'="#svg-loader-wave-top")
-        svg.loader-wave-bottom("xmlns:xlink"="http://www.w3.org/1999/xlink")
-          use('xlink:href'="#svg-loader-wave-bottom")
-        .iframe-loading-text
-          p.mb05.loading Loading
-          span.title
-          br
-          span.description
-
     script(src="./public/js/index.js" type="module" defer)
 
     if (process.env.NODE_ENV === 'production')
