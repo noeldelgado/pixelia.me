@@ -30,7 +30,7 @@ html(lang="en")
         p.mb1.desc Stuff I do for fun
         ul.section__grid
           each i, index in demos
-            li.section__grid__item
+            li
               a.section__grid__anchor(
                 href=`${i.url}`
                 rel="noopener noreferrer"
@@ -40,41 +40,40 @@ html(lang="en")
                 data-description=`${i.description}`
               )
                 if i.image
-                  .section__grid__image-wrapper
-                    figure
-                      picture
-                        each type in ["avif", "webp", "png"]
-                          source(
-                            type=`image/${type}`
-                            sizes=`
-                              (min-width: 1228px) 200px,
-                              (min-width: 1200px) 16.66vw,
-                              (min-width: 1000px) 20vw,
-                              (min-width: 800px) 25vw,
-                              (min-width: 600px) 33.33vw,
-                              (min-width: 400px) 50vw,
-                              100vw
-                            `
-                            srcset!=`
-                              ./public/images/${i.image}.png?as=${type}&width=200 200w,
-                              ./public/images/${i.image}.png?as=${type}&width=250 250w,
-                              ./public/images/${i.image}.png?as=${type}&width=300 300w,
-                              ./public/images/${i.image}.png?as=${type}&width=400 400w,
-                              ./public/images/${i.image}.png?as=${type}&width=500 500w,
-                              ./public/images/${i.image}.png?as=${type}&width=600 600w,
-                              ./public/images/${i.image}.png?as=${type}&width=800 800w
-                            `
-                          )
-                        img.section__grid__image(
-                          src=`./public/images/${i.image}.png?as=${'png'}&width=400`
-                          width="400"
-                          height="225"
-                          alt=`${i.name} - ${i.description}`
-                          loading=`${index === 0 ? 'eager' : 'lazy'}`
-                          decoding="async"
+                  figure
+                    picture
+                      each type in ["avif", "webp", "png"]
+                        source(
+                          type=`image/${type}`
+                          sizes=`
+                            (min-width: 1228px) 200px,
+                            (min-width: 1200px) 16.66vw,
+                            (min-width: 1000px) 20vw,
+                            (min-width: 800px) 25vw,
+                            (min-width: 600px) 33.33vw,
+                            (min-width: 400px) 50vw,
+                            100vw
+                          `
+                          srcset!=`
+                            ./public/images/${i.image}.png?as=${type}&width=200 200w,
+                            ./public/images/${i.image}.png?as=${type}&width=250 250w,
+                            ./public/images/${i.image}.png?as=${type}&width=300 300w,
+                            ./public/images/${i.image}.png?as=${type}&width=400 400w,
+                            ./public/images/${i.image}.png?as=${type}&width=500 500w,
+                            ./public/images/${i.image}.png?as=${type}&width=600 600w,
+                            ./public/images/${i.image}.png?as=${type}&width=800 800w
+                          `
                         )
+                      img.section__grid__image(
+                        src=`./public/images/${i.image}.png?as=${'png'}&width=400`
+                        width="400"
+                        height="225"
+                        alt=`${i.name} - ${i.description}`
+                        loading=`${index === 0 ? 'eager' : 'lazy'}`
+                        decoding="async"
+                      )
 
-                      figcaption= i.description
+                    figcaption= i.description
 
       section.oss
         h2.ttu OSS / Libs / Tools
@@ -82,41 +81,41 @@ html(lang="en")
         ul.section__grid.list--decimal
           each i in oss
             li
-              a.dif(
-                href=`${i.url}`
-                data-title=`${i.name}`
-                data-description=`${i.description}`
-                rel=(i.external && "noopener noreferrer")
-                target=(i.external && "_blank")
-                aria-label=(i.external && `${i.name} - link opens in a new tab`)
-              )
-                if i.image
-                  .icon
-                    picture
-                      each type in ["avif", "webp", "png"]
-                        source(
-                          type=`image/${type}`
-                          srcset!=`
-                            ./public/images/${i.image}.png?as=${type}&width=32 1x,
-                            ./public/images/${i.image}.png?as=${type}&width=64 2x
-                          `
-                        )
-                      img(
-                        src!=`./public/images/${i.image}.png?as=png&width=32`
-                        width="32"
-                        height="32"
-                        alt="project icon"
-                        loading="lazy"
-                        decoding="async"
+              if i.image
+                .icon
+                  picture
+                    each type in ["avif", "webp", "png"]
+                      source(
+                        type=`image/${type}`
+                        srcset!=`
+                          ./public/images/${i.image}.png?as=${type}&width=32 1x,
+                          ./public/images/${i.image}.png?as=${type}&width=64 2x
+                        `
                       )
-                else if i.icon
-                  .icon.emoji= i.icon
-                div
+                    img(
+                      src!=`./public/images/${i.image}.png?as=png&width=32`
+                      width="32"
+                      height="32"
+                      alt="project icon"
+                      loading="lazy"
+                      decoding="async"
+                    )
+              else if i.icon
+                .icon.emoji= i.icon
+              div
+                a.dif(
+                  href=`${i.url}`
+                  data-title=`${i.name}`
+                  data-description=`${i.description}`
+                  rel=(i.external && "noopener noreferrer")
+                  target=(i.external && "_blank")
+                  aria-label=(i.external && `${i.name} - link opens in a new tab`)
+                )
                   span.-le= i.name
                     if i.external
                       svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
                         use('xlink:href'="#svg-launch-24px")
-                  p.desc= i.description
+                p.desc= i.description
 
       section.projects
         h2.ttu Projects
@@ -125,7 +124,7 @@ html(lang="en")
           each i in projects
             li
               div
-                div.dif
+                .dif
                   if i.image
                     picture.icon
                       each type in ["avif", "webp", "png"]
