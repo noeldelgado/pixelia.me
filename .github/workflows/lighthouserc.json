@@ -15,6 +15,7 @@
         "non-composited-animations": "warn",
         "unused-javascript": "warn",
         "uses-rel-preconnect": "warn",
+        "csp-xss": "warn",
         "offline-start-url": "off",
         "service-worker": "off",
         "works-offline": "off"

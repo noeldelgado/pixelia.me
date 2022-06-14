@@ -8,15 +8,29 @@ section.demos {
       margin: 0;
     }
   }
-
-  & .section__grid__item {
-    padding: 0;
-  }
 }
 
 .section__grid__anchor {
   position: relative;
   display: block;
+
+  & > figure {
+    position: relative;
+    background-color: var(--color-bg);
+    transform: translate3d(0, 0, 0);
+
+    & > figcaption {
+      opacity: 0;
+      position: absolute;
+      background: var(--color-bg);
+      inset: auto 0 0 0;
+      padding: 0.25rem;
+      font-size: .85714em;
+      text-align: center;
+      color: var(--color-text-darker);
+      will-change: opacity;
+    }
+  }
 
   & .FollowingEye {
     position: absolute;
@@ -48,26 +62,6 @@ section.demos {
   }
 }
 
-.section__grid__image-wrapper  {
-  background-color: var(--color-bg);
-  transform: translate3d(0, 0, 0);
-
-  & > figure {
-    position: relative;
-
-    & > figcaption {
-      opacity: 0;
-      position: absolute;
-      background: var(--color-bg);
-      inset: auto 0 0 0;
-      padding: 0.25rem;
-      font-size: .85714em;
-      text-align: center;
-      color: var(--color-text-darker);
-      will-change: opacity;
-    }
-  }
-}
 .section__grid__image {
   display: block;
   opacity: 1;

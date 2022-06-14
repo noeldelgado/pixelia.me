@@ -2,13 +2,12 @@
 @import './lib/social-nav';
 @import './lib/section-demos';
 @import './lib/section-oss';
+@import './lib/section-projects';
 @import './lib/projects-detail';
 @import './lib/footer';
 
 @font-face {
   font-family: 'Droid Sans Mono';
-  font-style: normal;
-  font-weight: 400;
   font-display: swap;
   src: url(../fonts/droidsansmono.woff2) format('woff2');
 }
@@ -139,7 +138,7 @@ canvas {
   padding-right: 1rem;
 }
 
-.-desc {
+.desc {
   font-size: 0.85714em;
   color: var(--color-text-darker);
 }
@@ -171,7 +170,9 @@ canvas {
 .pr { position: relative }
 .mb05 { margin-bottom: 0.5rem }
 .mb1 { margin-bottom: 1rem }
-.-td { color: var(--color-text-darker) }
-.-ttu { text-transform: uppercase }
-.-dif { display: inline-flex }
+.td { color: var(--color-text-darker) }
+.ttu { text-transform: uppercase }
+.db { display: block }
+.df { display: flex }
+.dif { display: inline-flex }
 /* .-aic { align-items: center } */
