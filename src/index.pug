@@ -29,7 +29,7 @@ html(lang="en")
         h2.ttu Demos / Animations / Interactions
         p.mb1.desc Stuff I do for fun
         ul.section__grid
-          each i in demos
+          each i, index in demos
             li.section__grid__item
               a.section__grid__anchor(
                 href=`${i.url}`
@@ -70,7 +70,7 @@ html(lang="en")
                           width="400"
                           height="225"
                           alt=`${i.name} - ${i.description}`
-                          loading="lazy"
+                          loading=`${index === 0 ? 'eager' : 'lazy'}`
                           decoding="async"
                         )
 
