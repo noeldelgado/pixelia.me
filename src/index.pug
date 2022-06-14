@@ -21,13 +21,13 @@ html(lang="en")
 
     header.wrapper.pr
       h1 Noel Delgado
-      h2.mb05 Web Developer &amp; pseudo-<span class="-td">████████</span>
+      h2.mb05 Web Developer &amp; pseudo-<span class="td">████████</span>
       +social-nav
 
     main.wrapper.pr
       section.demos
-        h2.-ttu Demos / Animations / Interactions
-        p.mb1.-desc Stuff I do for fun
+        h2.ttu Demos / Animations / Interactions
+        p.mb1.desc Stuff I do for fun
         ul.section__grid
           each i in demos
             li.section__grid__item
@@ -77,12 +77,12 @@ html(lang="en")
                       figcaption= i.description
 
       section.oss
-        h2.-ttu OSS / Libs / Tools
-        p.mb1.-desc Contributions to open-source
+        h2.ttu OSS / Libs / Tools
+        p.mb1.desc Open source contributions
         ul.section__grid.list--decimal
           each i in oss
             li
-              a.-dif(
+              a.dif(
                 href=`${i.url}`
                 data-title=`${i.name}`
                 data-description=`${i.description}`
@@ -93,23 +93,16 @@ html(lang="en")
                 if i.image
                   .icon
                     picture
-                      source(
-                        type="image/avif"
-                        srcset!=`
-                          ./public/images/${i.image}.png?as=avif&width=32 1x,
-                          ./public/images/${i.image}.png?as=avif&width=64 2x
-                        `
-                      )
-                      source(
-                        type="image/webp"
-                        srcset!=`
-                          ./public/images/${i.image}.png?as=webp&width=32 1x,
-                          ./public/images/${i.image}.png?as=webp&width=64 2x
-                        `
-                      )
+                      each type in ["avif", "webp", "png"]
+                        source(
+                          type=`image/${type}`
+                          srcset!=`
+                            ./public/images/${i.image}.png?as=${type}&width=32 1x,
+                            ./public/images/${i.image}.png?as=${type}&width=64 2x
+                          `
+                        )
                       img(
-                        src=`./public/images/${i.image}.png?as=png&width=32`
-                        srcset=`./public/images/${i.image}.png?as=png&width=64 2x`
+                        src!=`./public/images/${i.image}.png?as=png&width=32`
                         width="32"
                         height="32"
                         alt="project icon"
@@ -123,7 +116,7 @@ html(lang="en")
                     if i.external
                       svg(class="svg--external-icon" width="16" height="16" aria-hidden="true")
                         use('xlink:href'="#svg-launch-24px")
-                  p.-desc= i.description
+                  p.desc= i.description
 
       section.projects
         h2.ttu Projects
@@ -168,7 +161,7 @@ html(lang="en")
 
     footer.wrapper.pr
       +social-nav
-      .-td v#{version}
+      .td v#{version}
 
     .iframe-wrapper
       iframe(
