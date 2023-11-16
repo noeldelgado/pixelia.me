@@ -20,7 +20,7 @@
     "eslint": "8.17.0",
     "parcel": "2.6.0",
     "postcss": "8.4.14",
-    "sharp": "0.29.3"
+    "sharp": "0.32.6"
   },
   "@parcel/transformer-css": {
     "drafts": {
